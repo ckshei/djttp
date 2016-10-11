@@ -23,15 +23,29 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
   background-color: #181818;
-  color: #FFFFFF;
-
-  font-family: 'Helvetica Neue', sans-serif;
+  color: #E0E0E0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.1em;
   margin: 0;
   padding: 0;
 }
 
+div.event {
+  background-color: #282828;
+  position: relative;
+  margin: 0 auto;
+  height: 150px;
+  padding: 1em;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
+}
+
+p.event-date {
+  margin-top: 0.8em;
+  margin-bottom: 0.3em;
+  text-align: right;
 }
 
 span {
@@ -58,4 +72,21 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   border-collapse: collapse;
 }
 
+.divider{
+    position:absolute;
+    left:50%;
+    top:20%;
+    bottom:20%;
+    border-left:1px solid white;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #E0E0E0;
+}
+
+p {
+  margin: .9em 0;
+}
 /* must have mixins: respond-to(mobile), vertical center, top-x/bottom-x */
+
