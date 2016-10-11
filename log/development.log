@@ -23044,3 +23044,33 @@ Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c
 
 
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 16:14:10 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1mSELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?[0m  [["guest_id", 1]]
+  Rendered users/home.html.erb within layouts/application (33.1ms)
+  Rendered layouts/_navbar.html.erb (5.2ms)
+Completed 200 OK in 188ms (Views: 110.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/application.self-22fcffc5250d06991dfea1f1bb92d1a918d14fd495c55132ce711ecdcb94a863.css?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 16:14:11 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 16:14:11 -0400
