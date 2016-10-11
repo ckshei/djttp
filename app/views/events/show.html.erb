@@ -1,0 +1,18 @@
+<h1>Event#show</h1>
+<%= @event.date %>
+<%= @event.name %>
+Guest List:
+<% @event.guests.each do |guest| %>
+  <%= guest.display_name %>
+  <br>
+<% end %>
+<a href="<%= @event.playlist.url %>" target="_blank"><%= @event.playlist.url %></a>
+<%= link_to("RSVP", :controller => :events, :action => :guest) unless @event.guests.include? current_user%>
+<% if @event.host == current_user && @event.playlist.add_songs.any? %>
+<%= link_to("Refresh Playlist", :controller => :events, :action=> :refresh_playlist) %>
+<% end %>
+
+<% @event.playlist.current_songs.each do |song| %>
+  <%= RSpotify::Track.find(song).name %>
+  <br>
+<% end %>

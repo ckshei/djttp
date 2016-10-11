@@ -1,0 +1,6 @@
+<h1>Songs#index</h1>
+<% @songs.each do |song| %>
+  <%= song.name %>
+<% end %>
+
+<%= link_to("add song", new_user_song_path) %>

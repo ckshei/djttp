@@ -1,0 +1,8 @@
+<% if @current_user %>
+Hello  <%= @current_user.display_name %>
+<%= link_to("Home", root_path) %>
+<%= link_to("All Events", events_path) %>
+<%= link_to("My Favorite Songs", user_songs_path(@current_user)) %>
+<%= link_to("logout", logout_path, method: :post) %>
+<% end %>
+

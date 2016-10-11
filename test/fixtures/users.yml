@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: 1
+  display_name: MyString
+  password_digest: MyString
+  email: MyString
+  top_tracks: MyString
+  top_artists: MyString
+
+two:
+  uid: 1
+  display_name: MyString
+  password_digest: MyString
+  email: MyString
+  top_tracks: MyString
+  top_artists: MyString

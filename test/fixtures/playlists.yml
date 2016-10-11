@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  host_id: 1
+  playlist_id: MyString
+  previous: MyText
+  current: MyText
+  url: MyString
+
+two:
+  event_id: 1
+  host_id: 1
+  playlist_id: MyString
+  previous: MyText
+  current: MyText
+  url: MyString
