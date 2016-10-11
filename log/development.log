@@ -22962,3 +22962,85 @@ Processing by UsersController#new as HTML
   Rendered users/new.html.erb within layouts/application (3.2ms)
   Rendered layouts/_navbar.html.erb (0.9ms)
 Completed 200 OK in 416ms (Views: 372.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-11 16:10:52 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navbar.html.erb (0.1ms)
+Completed 200 OK in 92ms (Views: 91.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/application.self-22fcffc5250d06991dfea1f1bb92d1a918d14fd495c55132ce711ecdcb94a863.css?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 16:10:52 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-11 16:10:53 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-11 16:10:54 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-11 16:11:14 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-11 16:11:15 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQCq55QiyLHLgb6MFwtTIyx8V2qlz2ZKvtZl3pWW5iIknuuxBSWxzIUfo2BMxuWXCEQnItqdYJ6UVfI9ij1sR--k9pfC_M8HtkairUFFzbXPt1PjBoyygqPJspZ5rsP9F9UOnFnTYYRI55glEw8F9kdTtR-91qX2YoBHTRavUqB6Z10VhakXZFuQC23rPAFjOXTa0r3uAONo8iPT4t33Dhbn6NsIlH76lHd2rOLBpm6jnOnARe1858j5kACffq1yuWUGF_ZhSGUrEagihDUhjvsfYCH7X3cTbH9sDL8e46EjIvT0ONOteNH-B7dGuFwgFg4UCv_9x3pZRjTtnokz_WM&state=3246068f770e65d048abff33dd160269196fc1633148cbbc" for ::1 at 2016-10-11 16:11:15 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQCq55QiyLHLgb6MFwtTIyx8V2qlz2ZKvtZl3pWW5iIknuuxBSWxzIUfo2BMxuWXCEQnItqdYJ6UVfI9ij1sR--k9pfC_M8HtkairUFFzbXPt1PjBoyygqPJspZ5rsP9F9UOnFnTYYRI55glEw8F9kdTtR-91qX2YoBHTRavUqB6Z10VhakXZFuQC23rPAFjOXTa0r3uAONo8iPT4t33Dhbn6NsIlH76lHd2rOLBpm6jnOnARe1858j5kACffq1yuWUGF_ZhSGUrEagihDUhjvsfYCH7X3cTbH9sDL8e46EjIvT0ONOteNH-B7dGuFwgFg4UCv_9x3pZRjTtnokz_WM", "state"=>"3246068f770e65d048abff33dd160269196fc1633148cbbc"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", 1237346371]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQBcaB4ICkccOW8NLP36y08qJg6RXP0wLe9PSYdSXVmA2PFyI-BqGqvQRywrQxd-4rle1F4DU1EyNSNU8iKgqSFdQP4YKzZD1CUaRGgWjLPHvQRtgxeTEDiWs5bb6k4zVF37FBh6oF8fJ2cIuxwH4QXcmiF1FVUC56qsnVt2fc917V_ADUHhs4znY9e9SqmRg1s7ZZDU0c7gmgWonw-eU3Llhgd8SNc9tY0FV_oa14o\n  refresh_token: AQAZDzsSsJngg2mCupgd4uB6gqmGRZ0JZBavNP3IMUGMO7cUUdJYBkRIXVuuSr5Gd4yINKDwFT3guhAU3LME9LNKUL_ta7OTJiS0EQ6RPiJYqPtTcEEZ5HifsOu2e3QzAZ8\n  expires_at: 1476220275\n  expires: true\n"], ["updated_at", "2016-10-11 20:11:16.536217"], ["id", 1]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 416ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 16:11:16 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (1.2ms)[0m  [1mSELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?[0m  [["guest_id", 1]]
+  Rendered users/home.html.erb within layouts/application (72.0ms)
+  Rendered layouts/_navbar.html.erb (1.8ms)
+Completed 200 OK in 500ms (Views: 478.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/application.self-22fcffc5250d06991dfea1f1bb92d1a918d14fd495c55132ce711ecdcb94a863.css?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 16:11:17 -0400
