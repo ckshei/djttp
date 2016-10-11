@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'rspotify', '1.18.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -21,6 +21,11 @@ class UsersController < ApplicationController
   def home
     current_user
     @event = Event.new
+    @events = Event.all
+    respond_to do |format|
+      format.html {render :home}
+      format.json {render json: @events}
+    end
   end
 
   def logout
