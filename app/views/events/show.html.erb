@@ -6,13 +6,13 @@ Guest List:
   <%= guest.display_name %>
   <br>
 <% end %>
-<a href="<%= @event.playlist.url %>" target="_blank"><%= @event.playlist.url %></a>
+<a href="<%= @event.playlist.spotify_url %>" target="_blank"><%= @event.playlist.spotify_url %></a>
 <%= link_to("RSVP", :controller => :events, :action => :guest) unless @event.guests.include? current_user%>
-<% if @event.host == current_user && @event.playlist.add_songs.any? %>
+<% if @event.host == current_user %>
 <%= link_to("Refresh Playlist", :controller => :events, :action=> :refresh_playlist) %>
 <% end %>
 
-<% @event.playlist.current_songs.each do |song| %>
-  <%= RSpotify::Track.find(song).name %>
+<% @event.playlist.songs.each do |song| %>
+  <%= song.name %>
   <br>
 <% end %>

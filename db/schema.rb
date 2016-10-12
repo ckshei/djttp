@@ -31,27 +31,27 @@ ActiveRecord::Schema.define(version: 20161011232059) do
   create_table "playlist_songs", force: :cascade do |t|
     t.integer  "playlist_id"
     t.integer  "song_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "request_count"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "playlists", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "host_id"
-    t.string   "playlist_id"
-    t.text     "current_songs"
-    t.text     "add_songs"
-    t.string   "url"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "spotify_playlist_id"
+    t.string   "spotify_url"
+    t.string   "rsvp_url"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "songs", force: :cascade do |t|
     t.string   "name"
-    t.string   "spotify_id"
+    t.string   "spotify_song_id"
     t.string   "artist"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(version: 20161011232059) do
     t.string   "display_name"
     t.string   "password_digest"
     t.string   "email"
-    t.string   "top_tracks"
-    t.string   "top_artists"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.text     "spotify_hash"

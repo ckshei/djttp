@@ -19,14 +19,14 @@ class Event < ActiveRecord::Base
     playlist.update(
       event_id: self.id,
       host_id: user.id, 
-      playlist_id: spotify_playlist.id,
-      current_songs: spotify_playlist.tracks.map(&:id).to_set,
-      url: spotify_playlist.external_urls["spotify"]
+      spotify_playlist_id: spotify_playlist.id,
+      spotify_url: spotify_playlist.external_urls["spotify"]
     )
     playlist.save
   end
 
   def add_songs(user)
+    byebug
     user.top_tracks.each do |id|
       if playlist.current_songs.include?(id)
         next

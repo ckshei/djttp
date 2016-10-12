@@ -6,8 +6,6 @@ class UserAdapter
     user.update(
       :display_name => hash["display_name"],
       :email => hash["email"],
-      :top_tracks => spotify_user.top_tracks.map(&:id).take(5),
-      :top_artists => spotify_user.top_artists.map(&:id).take(5),
       :spotify_hash => spotify_user.to_hash
     )
     user
