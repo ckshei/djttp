@@ -5,7 +5,6 @@ class CreatePlaylists < ActiveRecord::Migration
       t.integer :host_id
       t.string :spotify_playlist_id
       t.string :spotify_url
-      t.string :rsvp_url
 
       t.timestamps null: false
     end

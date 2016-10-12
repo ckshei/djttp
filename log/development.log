@@ -37900,3 +37900,801 @@ Processing by EventsController#create as */*
 [active_model_serializers]   [1m[36mPlaylist Load (0.5ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
 [active_model_serializers] Rendered EventSerializer with ActiveModelSerializers::Adapter::Attributes (33.04ms)
 Completed 201 Created in 2148ms (Views: 36.0ms | ActiveRecord: 28.6ms)
+
+
+Started POST "/logout" for ::1 at 2016-10-12 18:00:36 -0400
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"/Q+Bb82t/ZaONrvqRQTWQPDU4WpTtFENpKUuPbsmKpzyMZQZKXCVuAVCvtoqh05EjdWkJkpPKdAyOy3NsLW92Q=="}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 109ms (ActiveRecord: 21.5ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 18:00:37 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 259ms (Views: 229.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:00:38 -0400
+Processing by UsersController#home as JSON
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 14ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 18:00:38 -0400
+Processing by UsersController#new as */*
+  Rendered users/new.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_navbar.html.erb (2.2ms)
+Completed 200 OK in 258ms (Views: 248.0ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 18:01:12 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 18:01:14 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQBDrP1W-mo6Jp1pAppoq2-uH-NumAX0Mj4U28bmztFbaIHj03WByBviZDNxchX4OlDt-ifv0iILvA0Sootqfu_MewHqWzDXjArff1mDLngeW0pQW9iYAXxdTevxQV0aOa8WoN4-4cxHwR-A55RY4Z92z0H9S-RvMq2ADkyZAMykAkE8ovwqkVUnN9TWVk8JmgpiWq6b3JgiqPL7ijw9qQNW1FWW-_m_3y-5ckqt1FsvsypRUIw-_Rg_J7Fcknxn1fCadfC6dPhSs9JwsOQ-2feoZBLrIiozJl4qDopekSztydX1PmiWO8fHMrMA7RgtuCZiqTfkJ0exyxMJnkwvB3Y&state=da49f3d47fdcac25be480af5ff3d44e8e295db9eb2c4bfc7" for ::1 at 2016-10-12 18:01:15 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQBDrP1W-mo6Jp1pAppoq2-uH-NumAX0Mj4U28bmztFbaIHj03WByBviZDNxchX4OlDt-ifv0iILvA0Sootqfu_MewHqWzDXjArff1mDLngeW0pQW9iYAXxdTevxQV0aOa8WoN4-4cxHwR-A55RY4Z92z0H9S-RvMq2ADkyZAMykAkE8ovwqkVUnN9TWVk8JmgpiWq6b3JgiqPL7ijw9qQNW1FWW-_m_3y-5ckqt1FsvsypRUIw-_Rg_J7Fcknxn1fCadfC6dPhSs9JwsOQ-2feoZBLrIiozJl4qDopekSztydX1PmiWO8fHMrMA7RgtuCZiqTfkJ0exyxMJnkwvB3Y", "state"=>"da49f3d47fdcac25be480af5ff3d44e8e295db9eb2c4bfc7"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "1237346371"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQCx32LslUdU3lEfHf6b_MwzdX7-l18sp_O-tO3d7qGmOmylCO_xOSFN08S3DqJjYHxA86DFsVYBLFBHoFPsHQohh1ZqXzgNJ33IQwraLUqQARVV3EndgoRjBfPrbTKwKMNbaoEaH1R83pvF4PQX7tg4jkZs6zZ3Iofa1NpGossUDOPuwMDsZRm1BWVEnAZyt_EcV2cl4NafYWJ0h5-1BrXzf0jKz19Bf6OpPqM2e-0\n  refresh_token: AQDNXstcRMy0y6MgDPCNiuD_1Rwa7IpAmAxSdOon-Mb5L9H0vvXIZCT3SuIln4a21WeCZbYbrdgnnF54HqdYe8qyUAFaMyJS6S6M6jFzsBm-fruQp93h3gOAGQc6s4Fuzz4\n  expires_at: 1476313275\n  expires: true\n"], ["updated_at", "2016-10-12 22:01:15.855044"], ["id", 1]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 64ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:01:15 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+  [1m[36mPlaylist Load (0.4ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146143750460 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146143750460 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  Rendered users/home.html.erb within layouts/application (104.3ms)
+  Rendered layouts/_navbar.html.erb (1.8ms)
+Completed 200 OK in 617ms (Views: 595.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:01:16 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:01:16 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.3ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (41.1ms)
+Completed 200 OK in 81ms (Views: 77.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:01:36 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.9ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (29.87ms)
+Completed 200 OK in 35ms (Views: 31.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:01:36 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.36ms)
+Completed 200 OK in 28ms (Views: 25.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:02:06 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.8ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (60.77ms)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 3.7ms)
+
+ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+  app/serializers/playlist_serializer.rb:5:in `rsvp_url'
+  app/controllers/users_controller.rb:27:in `block (2 levels) in home'
+  app/controllers/users_controller.rb:25:in `home'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (107.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (66.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (151.1ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:02:17 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (35.72ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 2.0ms)
+
+ArgumentError (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+  app/serializers/playlist_serializer.rb:5:in `rsvp_url'
+  app/controllers/users_controller.rb:27:in `block (2 levels) in home'
+  app/controllers/users_controller.rb:25:in `home'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (62.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (134.8ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:02:28 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (39.53ms)
+Completed 200 OK in 93ms (Views: 56.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 18:02:37 -0400
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:02:37 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.3ms)[0m  SELECT "events".* FROM "events" WHERE "events"."host_id" = ?  [["host_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+  [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146143750460 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+  [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 14]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146143750460 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  Rendered users/home.html.erb within layouts/application (14.4ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 62ms (Views: 59.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:02:37 -0400
+Processing by UsersController#home as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 14]]
+[active_model_serializers]   [1m[36m (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36m (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (49.24ms)
+Completed 200 OK in 54ms (Views: 51.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:03:20 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/home.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:03:20 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:03:20 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.11ms)
+Completed 200 OK in 31ms (Views: 27.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:03:33 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146175883820 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146175883820 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  Rendered users/home.html.erb within layouts/application (15.9ms)
+  Rendered layouts/_navbar.html.erb (0.7ms)
+Completed 200 OK in 60ms (Views: 57.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:03:33 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:03:33 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (90.82ms)
+Completed 200 OK in 99ms (Views: 95.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:04:08 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (29.55ms)
+Completed 200 OK in 34ms (Views: 31.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:04:59 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+  [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146175883820 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from block in _app_views_users_home_html_erb___3455273457632566688_70146175883820 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/users/home.html.erb:32)
+  Rendered users/home.html.erb within layouts/application (43.7ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 138ms (Views: 90.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:04:59 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:04:59 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:04:59 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:04:59 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:04:59 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:05:00 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:05:00 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:05:00 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:05:00 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:05:00 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.3ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (56.39ms)
+Completed 200 OK in 66ms (Views: 61.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:05:30 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered users/home.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 66ms (Views: 36.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:05:30 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:05:30 -0400
+Processing by UsersController#home as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+[active_model_serializers]   [1m[36mPlaylist Load (0.4ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 14]]
+[active_model_serializers]   [1m[36m (0.3ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36m (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (86.51ms)
+Completed 200 OK in 100ms (Views: 95.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:09:48 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/home.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_navbar.html.erb (1.4ms)
+Completed 200 OK in 118ms (Views: 85.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:09:48 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:09:49 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (124.32ms)
+Completed 200 OK in 145ms (Views: 141.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:10:03 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered users/home.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navbar.html.erb (3.8ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:10:03 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:10:04 -0400
+Processing by UsersController#home as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 14]]
+[active_model_serializers]   [1m[36m (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36m (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35mCACHE (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.12ms)
+Completed 200 OK in 32ms (Views: 28.7ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/events" for ::1 at 2016-10-12 18:10:08 -0400
+Processing by EventsController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S9V/3S59Wo2kQCtZTQpDxMd3k0h1AIchad9NNaQMlF5E62qryqAyoy80LmkiidvAunbWBGz7//z/QU7Fr58DGw==", "event"=>{"name"=>"efareg", "date"=>"0001-01-01", "host_id"=>"1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "events" ("name", "date", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "efareg"], ["date", "0001-01-01"], ["host_id", 1], ["created_at", "2016-10-12 22:10:08.530838"], ["updated_at", "2016-10-12 22:10:08.530838"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playlists" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-10-12 22:10:09.858429"], ["updated_at", "2016-10-12 22:10:09.858429"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mSong Load (0.6ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Right As Rain"], ["spotify_song_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 9], ["song_id", 1], ["created_at", "2016-10-12 22:10:09.980754"], ["updated_at", "2016-10-12 22:10:09.980754"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Games Continued - Radio Edit"], ["spotify_song_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 9], ["song_id", 2], ["created_at", "2016-10-12 22:10:09.986800"], ["updated_at", "2016-10-12 22:10:09.986800"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "River Flows In You - Original"], ["spotify_song_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 9], ["song_id", 3], ["created_at", "2016-10-12 22:10:09.991348"], ["updated_at", "2016-10-12 22:10:09.991348"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Netflix and Chill"], ["spotify_song_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 9], ["song_id", 4], ["created_at", "2016-10-12 22:10:09.996423"], ["updated_at", "2016-10-12 22:10:09.996423"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "I - Original"], ["spotify_song_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 9], ["song_id", 5], ["created_at", "2016-10-12 22:10:10.001931"], ["updated_at", "2016-10-12 22:10:10.001931"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "playlists" SET "event_id" = ?, "host_id" = ?, "spotify_playlist_id" = ?, "spotify_url" = ?, "updated_at" = ? WHERE "playlists"."id" = ?  [["event_id", 15], ["host_id", 1237346371], ["spotify_playlist_id", "1YMivbzEqm86MCgc6zTFqM"], ["spotify_url", "http://open.spotify.com/user/1237346371/playlist/1YMivbzEqm86MCgc6zTFqM"], ["updated_at", "2016-10-12 22:10:10.005424"], ["id", 9]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 15]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 15]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 15]]
+[active_model_serializers] Rendered EventSerializer with ActiveModelSerializers::Adapter::Attributes (12.71ms)
+Completed 201 Created in 1499ms (Views: 13.3ms | ActiveRecord: 13.5ms)
+
+
+Started POST "/events" for ::1 at 2016-10-12 18:10:36 -0400
+Processing by EventsController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S9V/3S59Wo2kQCtZTQpDxMd3k0h1AIchad9NNaQMlF5E62qryqAyoy80LmkiidvAunbWBGz7//z/QU7Fr58DGw==", "event"=>{"name"=>"efaregasdf", "date"=>"0001-01-01", "host_id"=>"1"}}
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("name", "date", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "efaregasdf"], ["date", "0001-01-01"], ["host_id", 1], ["created_at", "2016-10-12 22:10:36.802210"], ["updated_at", "2016-10-12 22:10:36.802210"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "playlists" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-10-12 22:10:37.735864"], ["updated_at", "2016-10-12 22:10:37.735864"]]
+  [1m[35m (8.7ms)[0m  commit transaction
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Right As Rain"], ["spotify_song_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 10], ["song_id", 1], ["created_at", "2016-10-12 22:10:38.174387"], ["updated_at", "2016-10-12 22:10:38.174387"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Games Continued - Radio Edit"], ["spotify_song_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 10], ["song_id", 2], ["created_at", "2016-10-12 22:10:38.179364"], ["updated_at", "2016-10-12 22:10:38.179364"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "River Flows In You - Original"], ["spotify_song_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 10], ["song_id", 3], ["created_at", "2016-10-12 22:10:38.184578"], ["updated_at", "2016-10-12 22:10:38.184578"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mSong Load (0.3ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "Netflix and Chill"], ["spotify_song_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 10], ["song_id", 4], ["created_at", "2016-10-12 22:10:38.189692"], ["updated_at", "2016-10-12 22:10:38.189692"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mSong Load (0.5ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1[0m  [["name", "I - Original"], ["spotify_song_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playlist_songs" ("playlist_id", "song_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["playlist_id", 10], ["song_id", 5], ["created_at", "2016-10-12 22:10:38.194920"], ["updated_at", "2016-10-12 22:10:38.194920"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "playlists" SET "event_id" = ?, "host_id" = ?, "spotify_playlist_id" = ?, "spotify_url" = ?, "updated_at" = ? WHERE "playlists"."id" = ?  [["event_id", 16], ["host_id", 1237346371], ["spotify_playlist_id", "2UsM7Y6GgZR5vxyQc0XbY6"], ["spotify_url", "http://open.spotify.com/user/1237346371/playlist/2UsM7Y6GgZR5vxyQc0XbY6"], ["updated_at", "2016-10-12 22:10:38.200405"], ["id", 10]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 16]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 16]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 16]]
+[active_model_serializers] Rendered EventSerializer with ActiveModelSerializers::Adapter::Attributes (22.71ms)
+Completed 201 Created in 1448ms (Views: 24.4ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/events/16/rsvp" for ::1 at 2016-10-12 18:10:55 -0400
+Processing by EventsController#rsvp as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.4ms)[0m  SELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1  [["id", 16]]
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["event_id", 16], ["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 16], ["guest_id", 1], ["created_at", "2016-10-12 22:10:55.495525"], ["updated_at", "2016-10-12 22:10:55.495525"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 16]]
+  [1m[35mSong Load (5.9ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1  [["name", "Right As Rain"], ["spotify_song_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"]]
+  [1m[36mSong Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" WHERE "playlist_songs"."playlist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["playlist_id", 10], ["id", 1]]
+  [1m[35mPlaylistSong Load (0.2ms)[0m  SELECT  "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."song_id" = ? AND "playlist_songs"."playlist_id" = ? LIMIT 1  [["song_id", 1], ["playlist_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "playlist_songs" SET "request_count" = ?, "updated_at" = ? WHERE "playlist_songs"."id" = ?  [["request_count", 2], ["updated_at", "2016-10-12 22:10:56.295341"], ["id", 46]]
+  [1m[36m (8.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1  [["name", "Games Continued - Radio Edit"], ["spotify_song_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"]]
+  [1m[36mSong Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" WHERE "playlist_songs"."playlist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["playlist_id", 10], ["id", 2]]
+  [1m[35mPlaylistSong Load (0.2ms)[0m  SELECT  "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."song_id" = ? AND "playlist_songs"."playlist_id" = ? LIMIT 1  [["song_id", 2], ["playlist_id", 10]]
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "playlist_songs" SET "request_count" = ?, "updated_at" = ? WHERE "playlist_songs"."id" = ?  [["request_count", 2], ["updated_at", "2016-10-12 22:10:56.312609"], ["id", 47]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mSong Load (0.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1  [["name", "River Flows In You - Original"], ["spotify_song_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"]]
+  [1m[36mSong Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" WHERE "playlist_songs"."playlist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["playlist_id", 10], ["id", 3]]
+  [1m[35mPlaylistSong Load (0.1ms)[0m  SELECT  "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."song_id" = ? AND "playlist_songs"."playlist_id" = ? LIMIT 1  [["song_id", 3], ["playlist_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "playlist_songs" SET "request_count" = ?, "updated_at" = ? WHERE "playlist_songs"."id" = ?  [["request_count", 2], ["updated_at", "2016-10-12 22:10:56.321162"], ["id", 48]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mSong Load (0.2ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1  [["name", "Netflix and Chill"], ["spotify_song_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"]]
+  [1m[36mSong Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" WHERE "playlist_songs"."playlist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["playlist_id", 10], ["id", 4]]
+  [1m[35mPlaylistSong Load (0.1ms)[0m  SELECT  "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."song_id" = ? AND "playlist_songs"."playlist_id" = ? LIMIT 1  [["song_id", 4], ["playlist_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "playlist_songs" SET "request_count" = ?, "updated_at" = ? WHERE "playlist_songs"."id" = ?  [["request_count", 2], ["updated_at", "2016-10-12 22:10:56.328834"], ["id", 49]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mSong Load (0.1ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."name" = ? AND "songs"."spotify_song_id" = ? AND "songs"."artist" = ? LIMIT 1  [["name", "I - Original"], ["spotify_song_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"]]
+  [1m[36mSong Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" WHERE "playlist_songs"."playlist_id" = ? AND "songs"."id" = ? LIMIT 1[0m  [["playlist_id", 10], ["id", 5]]
+  [1m[35mPlaylistSong Load (0.2ms)[0m  SELECT  "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."song_id" = ? AND "playlist_songs"."playlist_id" = ? LIMIT 1  [["song_id", 5], ["playlist_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "playlist_songs" SET "request_count" = ?, "updated_at" = ? WHERE "playlist_songs"."id" = ?  [["request_count", 2], ["updated_at", "2016-10-12 22:10:56.335754"], ["id", 50]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/events/16
+Completed 302 Found in 1412ms (ActiveRecord: 25.9ms)
+
+
+Started GET "/events/16" for ::1 at 2016-10-12 18:10:56 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 16]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 16]]
+  [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 16]]
+DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` option explicitly set to `false`. This option will stop working on path helpers in Rails 5. Use the corresponding `*_url` helper instead. (called from _app_views_events_show_html_erb___2436002090333891430_70146174241100 at /Users/flatironschool/Desktop/apps/DJTTP/app/views/events/show.html.erb:18)
+  [1m[36mPlaylistSong Load (0.2ms)[0m  [1mSELECT "playlist_songs".* FROM "playlist_songs" WHERE "playlist_songs"."playlist_id" = ?[0m  [["playlist_id", 10]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mSong Load (0.1ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSong Load (0.3ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mSong Load (0.2ms)[0m  [1mSELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mSong Load (0.2ms)[0m  SELECT  "songs".* FROM "songs" WHERE "songs"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered events/show.html.erb within layouts/application (24.5ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 95ms (Views: 90.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:10:57 -0400
+Processing by UsersController#home as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 14]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 15]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 16]]
+[active_model_serializers]   [1m[36m (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36m (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36m (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 15]]
+[active_model_serializers]   [1m[35mCACHE (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 15]]
+[active_model_serializers]   [1m[36m (0.2ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 16]]
+[active_model_serializers]   [1m[35mCACHE (0.0ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 16]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (132.2ms)
+Completed 200 OK in 136ms (Views: 132.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 18:11:03 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered users/home.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/event.self-c4e05dd2bc8a79fec27ae6c2a667b93f08a48cd22bc5cdbdbff9f9e3433e3514.js?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 18:11:03 -0400
+
+
+Started GET "/welcome.json" for ::1 at 2016-10-12 18:11:03 -0400
+Processing by UsersController#home as JSON
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events"[0m
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 13]]
+[active_model_serializers]   [1m[36mPlaylist Load (1.4ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 15]]
+[active_model_serializers]   [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 16]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 13]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 13]]
+[active_model_serializers]   [1m[35m (0.1ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 14]]
+[active_model_serializers]   [1m[36mCACHE (0.1ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 14]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 15]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 15]]
+[active_model_serializers]   [1m[35m (0.2ms)[0m  SELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 16]]
+[active_model_serializers]   [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".id FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 16]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (124.58ms)
+Completed 200 OK in 132ms (Views: 126.2ms | ActiveRecord: 3.1ms)
