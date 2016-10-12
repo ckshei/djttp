@@ -13,14 +13,14 @@
     <% end %>
   </div>
 
-<% current_user.reservations.each do |event| %>
+<% current_user.events.each do |event| %>
   <p class="event-date"><%= event.date %></p>
   <div class="row event">
     <div class="divider"></div>
       <div class="col-xs-12 verticalLine">
         <h3 class='event-name'><%=link_to(event.name, event_path(event)) %></h3>    
         <p>Guest Count: <%= event.guests.count %></p>
-        <a href="<%= event.playlist.url %>" target="_blank">Spotify Playlist Link</a>
+        <a href="<%= event.playlist.spotify_url %>" target="_blank">Spotify Playlist Link</a>
       </div>
       <div class="col-xs-12">
         <%= link_to("edit", edit_event_path(event)) %>
