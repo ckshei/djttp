@@ -33343,3 +33343,931 @@ Processing by UsersController#home as HTML
   Rendered users/home.html.erb within layouts/application (17.9ms)
   Rendered layouts/_navbar.html.erb (0.7ms)
 Completed 200 OK in 172ms (Views: 168.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" integer(8), "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" integer(8), "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "image" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-10-12 11:12:25 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 404 Not Found in 43ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:13:in `current_user'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (89.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (182.0ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 11:12:57 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 430ms (Views: 428.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:12:58 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:12:59 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:13:00 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQA6xUqbv9nUzwUZ-_UzqwxwOQC-n0A8iz2Nsro8-rDLAZnzsk4pRq3ooOAsKjR2x44knSHsLtansCMBdDq05cVjmFVmw3wHNVPhuCvfrPaGJ5ndoSuMvOsE-1CUYnQXv_1b4-z2Dd2lI4dQ1jHLeNDSzRlJqxoXKAh_TmKVPwIgwqd8tH1ipuErospVlrDWuq7aRRdEcgFR0UPw74s5ebQVtrC0msijEWoClKU1x4a97rbL_PJc9jlFdb1eAd4yuEPiVgOP7FE-KFlrfAVcoQQ8wzCWtiCsGmW7aW3k1fcGCB0VRxlei-kcxciikIsChHwEOtVIIIcb1sK_6EKfVFs&state=2c852ba9fcb27e03ff8c64ed858c2b7199a48cf23310ada4" for ::1 at 2016-10-12 11:13:00 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQA6xUqbv9nUzwUZ-_UzqwxwOQC-n0A8iz2Nsro8-rDLAZnzsk4pRq3ooOAsKjR2x44knSHsLtansCMBdDq05cVjmFVmw3wHNVPhuCvfrPaGJ5ndoSuMvOsE-1CUYnQXv_1b4-z2Dd2lI4dQ1jHLeNDSzRlJqxoXKAh_TmKVPwIgwqd8tH1ipuErospVlrDWuq7aRRdEcgFR0UPw74s5ebQVtrC0msijEWoClKU1x4a97rbL_PJc9jlFdb1eAd4yuEPiVgOP7FE-KFlrfAVcoQQ8wzCWtiCsGmW7aW3k1fcGCB0VRxlei-kcxciikIsChHwEOtVIIIcb1sK_6EKfVFs", "state"=>"2c852ba9fcb27e03ff8c64ed858c2b7199a48cf23310ada4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", 1237346371]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("uid", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["uid", 1237346371], ["created_at", "2016-10-12 15:13:01.952408"], ["updated_at", "2016-10-12 15:13:01.952408"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "display_name" = ?, "email" = ?, "birthdate" = ?, "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["display_name", "Chris Shei"], ["email", "cks856@gmail.com"], ["birthdate", "1993-04-21"], ["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQBcMzp0o4SZi05REqMI1Pcguea_VHmyakR-hVOWcRNjl2I9MVNesUwETLbJdol13BeXjj61AfiCFICIGt8TD0idFTi1g73AmWUZKnGh4mC9Fl02s6BClHAJfy1oPO9rW0N9GxFhRnL7xwOr_P6sQkoEDy6R-XyGPZHvfSa8f_bsMhjB7uiZWdysufgdKPVGqrObdoDxzYgPanfYnSN8Ul7sVmUCDyN6HV34flDMess\n  refresh_token: AQCgn19yocHRS_QpSNBmjnpoxK4SoYFhvVFMAoN7q91rva_bB2F1wMCSL6mFxxPOaQS9YxSTcEjcS1YlY2SDc4E6aQOXupSo3Fbue6t_f3Og_dhzgSJbSfn87UY4jQaxz50\n  expires_at: 1476288781\n  expires: true\n"], ["updated_at", "2016-10-12 15:13:01.967399"], ["id", 1]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 63ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 11:13:01 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  Rendered users/home.html.erb within layouts/application (52.9ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 126ms (Views: 101.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:13:02 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started POST "/logout" for ::1 at 2016-10-12 11:23:11 -0400
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"vPMZVG/rKHipYTss3oNGabUZK+XFU5JpjvWsMGncI+zqse+vQ11CCIPfdbpZcp7JMkGqyy16krRFEa7syocJUg=="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 39ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 11:23:11 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 42ms (Views: 41.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:23:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:23:22 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQDotrj9KUIuUwjcrJq36RnhhRfhVU8Adfay0mvX85bnWaZ84jrc2FN4g6QUyxCAmjTK1ARWBtSSScmqjY91ETauWsuqN10Nhhs_7u9EzcS-mUf8bw1uygGbT2p_bZOFCtE5082EAMJ3KOEoOSdG9DVCK_VQcDaDaP6Jg-eK5rwTTRS0FL-8w-tBOpik5ItEW1oAWcStGkboog0yoo65IfV8YgP_aK2w8D8U9hZplctdLLBFYH3fkdPJSGIFMcywDEczBXx8kCQ6tQCdRGVnjde4_8ORfbtIQKedWevTaQidjPT2NBF7nbMywujP21hv_kuhe0psD5jVtzq1a3j8UBA&state=6daafc93c2d37654d7124adee18d64f7244513a0f0f4158b" for ::1 at 2016-10-12 11:23:23 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQDotrj9KUIuUwjcrJq36RnhhRfhVU8Adfay0mvX85bnWaZ84jrc2FN4g6QUyxCAmjTK1ARWBtSSScmqjY91ETauWsuqN10Nhhs_7u9EzcS-mUf8bw1uygGbT2p_bZOFCtE5082EAMJ3KOEoOSdG9DVCK_VQcDaDaP6Jg-eK5rwTTRS0FL-8w-tBOpik5ItEW1oAWcStGkboog0yoo65IfV8YgP_aK2w8D8U9hZplctdLLBFYH3fkdPJSGIFMcywDEczBXx8kCQ6tQCdRGVnjde4_8ORfbtIQKedWevTaQidjPT2NBF7nbMywujP21hv_kuhe0psD5jVtzq1a3j8UBA", "state"=>"6daafc93c2d37654d7124adee18d64f7244513a0f0f4158b"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", 1237346371]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQAyz0QnkbzbL5duGNqXabnSqcLLiljZjkIbjeO-YFNJVkmTckX81XCX0aVFr7o2OqWkaGUJT6sWmrvGV0Cqugump8XFB9dz2MSX_TX6fcH3FXKI9dl7F-yFaWDyGhUfP5HJcipiVCQDMSeTOgw-77r239-rE0j6Tu3B4Om-7U11mfH6wpIf_R1mjzAG6792UlNRuKZ7LhcGsoXrP8TyJ3SiALYhlu4g4NeiyFxqtXI\n  refresh_token: AQDx0qqIZ-KRh9PRMHt7mcsRmHgRUUNoBLcA0iq_JiWkH1fW6VwBMFP2xkUausXxPNX151eKYdixjW1qpHmiWZK88XOyq1rYzsVqCFmslL4qsUvKaMl5rx211ntlsZsyNIw\n  expires_at: 1476289403\n  expires: true\n"], ["updated_at", "2016-10-12 15:23:24.129444"], ["id", 1]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 73ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 11:23:24 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  Rendered users/home.html.erb within layouts/application (51.9ms)
+  Rendered layouts/_navbar.html.erb (2.0ms)
+Completed 200 OK in 483ms (Views: 459.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:23:24 -0400
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+
+
+Started POST "/logout" for ::1 at 2016-10-12 11:25:22 -0400
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"VVVisKSY0f1DG5i8oVwKRQJwN0tjpdXgXxVdH8qc+mUDF5RLiC67jWml1iomrdLlhSi2ZYuM1T2U8V/DacfQ2w=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 11:25:22 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar, "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "image" varchar, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for ::1 at 2016-10-12 11:27:45 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_navbar.html.erb (0.9ms)
+Completed 200 OK in 483ms (Views: 469.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:27:47 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:27:47 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQCT82Mm9IWVllDieSSFIDyUIs2k-5PpKpOAGFJPDaPf4ySKWDu7KEp1F-I2Cft_3a12qSpPNbkjc9cw_22RCnkxRhUC6XeGZRrOUwx1xQG-eRR3DwdsidGoAgzjABiLz4r0D8SxQFBA-XAKFLpS0dy94qkWyy-gfJrGa5k2Y1Dena_vAsqubKsNDPamJ4GTacVs3eP64O0tCLUghf69FiDLT4BOSamER8PPti6WzBFI5JLAX7q0f88F6faoFWShVY5AgGvsgStiXpUlvfOwdq17k_d6aKDPAWS10WdeyahxhRZSrAL2kKOYSZFssaQwS_Vj5ottPnOhMngQKTYxDPI&state=29e1c8406a232ad66e288774d0c1c18c64d63d9685ce2917" for ::1 at 2016-10-12 11:27:48 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQCT82Mm9IWVllDieSSFIDyUIs2k-5PpKpOAGFJPDaPf4ySKWDu7KEp1F-I2Cft_3a12qSpPNbkjc9cw_22RCnkxRhUC6XeGZRrOUwx1xQG-eRR3DwdsidGoAgzjABiLz4r0D8SxQFBA-XAKFLpS0dy94qkWyy-gfJrGa5k2Y1Dena_vAsqubKsNDPamJ4GTacVs3eP64O0tCLUghf69FiDLT4BOSamER8PPti6WzBFI5JLAX7q0f88F6faoFWShVY5AgGvsgStiXpUlvfOwdq17k_d6aKDPAWS10WdeyahxhRZSrAL2kKOYSZFssaQwS_Vj5ottPnOhMngQKTYxDPI", "state"=>"29e1c8406a232ad66e288774d0c1c18c64d63d9685ce2917"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "1237346371"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("uid", "created_at", "updated_at") VALUES (?, ?, ?)  [["uid", "1237346371"], ["created_at", "2016-10-12 15:27:49.082220"], ["updated_at", "2016-10-12 15:27:49.082220"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "display_name" = ?, "email" = ?, "birthdate" = ?, "image" = ?, "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["display_name", "Chris Shei"], ["email", "cks856@gmail.com"], ["birthdate", "1993-04-21"], ["image", "---\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \n"], ["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQCN677PmvnTKW_kMkGzS5yrGlRlGtevkgiJI4mNy_81LucsatJ-dEo_-YddTsnC2TI4gJw0gheFgDx3M6EMb9INxQx8NGkdSZT5VYUgJjrBflJaN-QOVmDqZIXCiwAY1pkYgsi8xMGewcz2lAvqrFOpYQQUs4VIb8Tqb9kVYCiWx6ieIQLcPS7DoteWvtuwlwzBwxXbY43jpDrKWDVKJ_v5P3RHhlFLjj0rgQPYZ-8\n  refresh_token: AQDEgpx_5mHqwkbC9ftK3ogQB8xtQfC7jorL6mqwnfelgu4ICKz4iPS5t42huBIOJWPENZkNY7hPGxsmOwFW4txeo8XkQVU8c2ylZHSsyZor5RpTO4z7Z_eEY8bqToSQBZ0\n  expires_at: 1476289668\n  expires: true\n"], ["updated_at", "2016-10-12 15:27:49.093459"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 80ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 11:27:49 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.3ms)[0m  SELECT "events".* FROM "events" WHERE "events"."host_id" = ?  [["host_id", 1]]
+  Rendered users/home.html.erb within layouts/application (45.9ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 110ms (Views: 87.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:27:49 -0400
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+
+
+Started POST "/logout" for ::1 at 2016-10-12 11:29:51 -0400
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"nPyptHFkGngPHGIAYoTtERGfpZGzzj/dpC1LjEqYofLKvl9PXdJwCCWiLJbldTWxlsckv1vnPwBvyUlQ6cOLTA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 31ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 11:29:51 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_navbar.html.erb (0.1ms)
+Completed 200 OK in 49ms (Views: 47.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar, "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "image" varchar, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-10-12 11:30:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+Completed 200 OK in 397ms (Views: 383.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:30:11 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:30:12 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:30:12 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQDiQwMtoq8gU-yX7unDwfm3ebuqdIeQwemSOULK0d-GzNbrY9VUH4MHi8Ys6Fos52Kw1cTttv9yWXKr-IwThpbr14pQXiQnTGLs5nVm8-QxxA4HocyU4RwDxjsOqi3_ddwNLOBh0RIM3WxgTWkWR3-MA51fs1f8oz_CjeWFMrWo0SNWGHi-kNeJjv5HFztUtu-mXPULwCSy7hsgVagF3JyEtcV_EvxWDHO65JWZvzWzn0h9bONK5gJefJhoow-dejLorrKxgevc7FdFH0DL4xaai05VvLme_Mj8xdmwxK_42oMYaan1HZ2UXc5RRR94Kv2fXmgKoIXTHhFWxT6NNtI&state=64aff73edc47dbed3d208b0722ba777d947ec741f137405d" for ::1 at 2016-10-12 11:30:13 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQDiQwMtoq8gU-yX7unDwfm3ebuqdIeQwemSOULK0d-GzNbrY9VUH4MHi8Ys6Fos52Kw1cTttv9yWXKr-IwThpbr14pQXiQnTGLs5nVm8-QxxA4HocyU4RwDxjsOqi3_ddwNLOBh0RIM3WxgTWkWR3-MA51fs1f8oz_CjeWFMrWo0SNWGHi-kNeJjv5HFztUtu-mXPULwCSy7hsgVagF3JyEtcV_EvxWDHO65JWZvzWzn0h9bONK5gJefJhoow-dejLorrKxgevc7FdFH0DL4xaai05VvLme_Mj8xdmwxK_42oMYaan1HZ2UXc5RRR94Kv2fXmgKoIXTHhFWxT6NNtI", "state"=>"64aff73edc47dbed3d208b0722ba777d947ec741f137405d"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "1237346371"]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("uid", "created_at", "updated_at") VALUES (?, ?, ?)  [["uid", "1237346371"], ["created_at", "2016-10-12 15:30:13.597596"], ["updated_at", "2016-10-12 15:30:13.597596"]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 13.2ms)
+
+ActiveRecord::SerializationTypeMismatch (Attribute was supposed to be a Hash, but was a Array. -- [#<OmniAuth::AuthHash height=nil url="https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1" width=nil>]):
+  app/models/user_adapter.rb:6:in `create'
+  app/controllers/users_controller.rb:12:in `spotify'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (90.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (79.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (170.2ms)
+
+
+Started GET "/auth/spotify/callback?code=AQDiQwMtoq8gU-yX7unDwfm3ebuqdIeQwemSOULK0d-GzNbrY9VUH4MHi8Ys6Fos52Kw1cTttv9yWXKr-IwThpbr14pQXiQnTGLs5nVm8-QxxA4HocyU4RwDxjsOqi3_ddwNLOBh0RIM3WxgTWkWR3-MA51fs1f8oz_CjeWFMrWo0SNWGHi-kNeJjv5HFztUtu-mXPULwCSy7hsgVagF3JyEtcV_EvxWDHO65JWZvzWzn0h9bONK5gJefJhoow-dejLorrKxgevc7FdFH0DL4xaai05VvLme_Mj8xdmwxK_42oMYaan1HZ2UXc5RRR94Kv2fXmgKoIXTHhFWxT6NNtI&state=64aff73edc47dbed3d208b0722ba777d947ec741f137405d" for ::1 at 2016-10-12 11:31:06 -0400
+
+OAuth2::Error (invalid_grant: Invalid authorization code
+{"error":"invalid_grant","error_description":"Invalid authorization code"}):
+  oauth2 (1.2.0) lib/oauth2/client.rb:113:in `request'
+  oauth2 (1.2.0) lib/oauth2/client.rb:138:in `get_token'
+  oauth2 (1.2.0) lib/oauth2/strategy/auth_code.rb:29:in `get_token'
+  omniauth-oauth2 (1.3.1) lib/omniauth/strategies/oauth2.rb:93:in `build_access_token'
+  omniauth-oauth2 (1.3.1) lib/omniauth/strategies/oauth2.rb:77:in `callback_phase'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:227:in `callback_call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:184:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.3.1) lib/omniauth/builder.rb:63:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (72.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (59.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (139.1ms)
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar, "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "image" varchar, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2016-10-12 11:31:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 483ms (Views: 467.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:31:43 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:31:43 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQBJIvzpbwCMAXcCytGyWtB5Ni5uOqfDmDrk_rj0fR8Udkq_wm6L4wYJNP77tJl1DiySTT66R2P61FmyzK7m0hwtjeQEi-X2yFn13-zqAwUH5-EjjfBPpslwKhc8jDbHiDiUIuojDXtikn6CDhjFcwOBN3K7gyOXec9-7RsIMU03DIs6-qEHUftJSdZ1wkzrRwG9GR5NAASAK8MLfJmsKitDReIA5XoNDDMdhviRvwsUuTH5pISZ9zbOO-8K2iCWQoMzqDun-dYvY_Z4f4lmVvIPjelGTEDdToWfgZe8wXTV-2n2omVZ81hmp5jse-QYn1Zoafvz9Vl5pJSuPjOuWsM&state=542965d53ce352c732c9f6cbeb42ba10280bfffbd9ee644e" for ::1 at 2016-10-12 11:31:43 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQBJIvzpbwCMAXcCytGyWtB5Ni5uOqfDmDrk_rj0fR8Udkq_wm6L4wYJNP77tJl1DiySTT66R2P61FmyzK7m0hwtjeQEi-X2yFn13-zqAwUH5-EjjfBPpslwKhc8jDbHiDiUIuojDXtikn6CDhjFcwOBN3K7gyOXec9-7RsIMU03DIs6-qEHUftJSdZ1wkzrRwG9GR5NAASAK8MLfJmsKitDReIA5XoNDDMdhviRvwsUuTH5pISZ9zbOO-8K2iCWQoMzqDun-dYvY_Z4f4lmVvIPjelGTEDdToWfgZe8wXTV-2n2omVZ81hmp5jse-QYn1Zoafvz9Vl5pJSuPjOuWsM", "state"=>"542965d53ce352c732c9f6cbeb42ba10280bfffbd9ee644e"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1  [["uid", "1237346371"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("uid", "created_at", "updated_at") VALUES (?, ?, ?)  [["uid", "1237346371"], ["created_at", "2016-10-12 15:31:44.523305"], ["updated_at", "2016-10-12 15:31:44.523305"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "display_name" = ?, "email" = ?, "birthdate" = ?, "image" = ?, "spotify_hash" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["display_name", "Chris Shei"], ["email", "cks856@gmail.com"], ["birthdate", "1993-04-21"], ["image", "---\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \n"], ["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQDNWGzQ4V8G2dG8F2yET-5XaQ6NE93OoUjYf05L5lZukAnlaFnxjybPbDuAlO6fC0T8Zb5uiUu9pju11ZWWTc7cyDQn_tTadp-tIXQ1HLVqkGKjB09IE8yHUtFeY0DSzF1xdnWLNNpFZMwzeK_mhJtvqUZ9ITmFYc1376xfnBsri2Nr9e7BHZFWo4MtIaMbBPnFkEM7u9Qu3ryt_ly__tswcHYwhEa8TgGtFIUQbBg\n  refresh_token: AQD5oV7OuJ06ZRk6HgKxRTwB8C-UNOzGTrEt6JLasJZz7GLZRkNZ5LEaEqhG50cR-GDWEZc8dH1Ve7NC1mIKjuzVTjM2t3ViIKbNoK56Jjhm766-CJhEdsAY5KjK3rE_o3w\n  expires_at: 1476289904\n  expires: true\n"], ["updated_at", "2016-10-12 15:31:44.543168"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 93ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 11:31:44 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.4ms)[0m  SELECT "events".* FROM "events" WHERE "events"."host_id" = ?  [["host_id", 1]]
+  Rendered users/home.html.erb within layouts/application (55.8ms)
+  Rendered layouts/_navbar.html.erb (1.4ms)
+Completed 200 OK in 129ms (Views: 106.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:31:44 -0400
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20160921191759)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "uid" varchar, "display_name" varchar, "email" varchar, "spotify_hash" text, "birthdate" date, "image" varchar, "username" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191759"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateEvents (20160921191837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "date" date, "host_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921191837"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreateEventGuests (20160921204524)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "event_guests" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "guest_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160921204524"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Migrating to CreatePlaylists (20160923194658)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "playlists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "event_id" integer, "host_id" integer, "spotify_playlist_id" varchar, "spotify_url" varchar, "rsvp_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160923194658"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreateSongs (20161011232010)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_song_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232010"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "request_count" integer DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161011232059"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started POST "/logout" for ::1 at 2016-10-12 11:34:46 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"vsTWAkhRqmkrN/8yPpv4Sfh/htr73oImf67YBeWiLoDohiD5ZOfAGQGJsaS5aiDpfycH9BP3gvu0StrZRvkEPg=="}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 404 Not Found in 42ms (ActiveRecord: 1.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  app/controllers/application_controller.rb:13:in `current_user'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (155.2ms)
+
+
+Started POST "/logout" for ::1 at 2016-10-12 11:34:55 -0400
+Processing by UsersController#logout as HTML
+  Parameters: {"authenticity_token"=>"vsTWAkhRqmkrN/8yPpv4Sfh/htr73oImf67YBeWiLoDohiD5ZOfAGQGJsaS5aiDpfycH9BP3gvu0StrZRvkEPg=="}
+Can't verify CSRF token authenticity
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms)
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  actionpack (4.2.6) lib/action_controller/metal/request_forgery_protection.rb:181:in `handle_unverified_request'
+  actionpack (4.2.6) lib/action_controller/metal/request_forgery_protection.rb:209:in `handle_unverified_request'
+  actionpack (4.2.6) lib/action_controller/metal/request_forgery_protection.rb:204:in `verify_authenticity_token'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:164:in `block in halting'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `each'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:504:in `call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.6) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.6) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.6) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.6) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.6) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.3.1) lib/omniauth/builder.rb:63:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/Cellar/ruby/2.3.1/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (78.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (60.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (140.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-12 11:35:01 -0400
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 418ms (Views: 416.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:35:04 -0400
+
+
+Started GET "/auth/spotify" for ::1 at 2016-10-12 11:35:04 -0400
+
+
+Started GET "/auth/spotify/callback?code=AQDizt2aekKs6FQX2jK84LQ2jqsfD3EqTsb0lCkS64TkNGmIJ437prpr-OTuUJtaYXQGzJwvlgkEo1IPePP0rhn61GFmt5G3dA-H3DE6rS7-_H3EGiWVOvawE0dcYb5VmxRUTGQ3YdbmYwa-rjZhD4flbW3KlVwTbJNe4LPBeRAltprGeOSwNVyPzKlvOJ8_tmcatB5snJbtTBXEN3qPaQW8JTYdsurn4NynrBB2ybbfPI1RCmhTK7r8pqlzRXL-niYvziNtGElkLRuWXafwY186ix2UXRpCu7AX5pAIQmHKVcqbpTtQEaw69ezk5WysqN2P2netztpH4g-qlgl653I&state=984e66e4c6b0817a7dcaa48cd9aae335145979be112e55b0" for ::1 at 2016-10-12 11:35:04 -0400
+Processing by UsersController#spotify as HTML
+  Parameters: {"code"=>"AQDizt2aekKs6FQX2jK84LQ2jqsfD3EqTsb0lCkS64TkNGmIJ437prpr-OTuUJtaYXQGzJwvlgkEo1IPePP0rhn61GFmt5G3dA-H3DE6rS7-_H3EGiWVOvawE0dcYb5VmxRUTGQ3YdbmYwa-rjZhD4flbW3KlVwTbJNe4LPBeRAltprGeOSwNVyPzKlvOJ8_tmcatB5snJbtTBXEN3qPaQW8JTYdsurn4NynrBB2ybbfPI1RCmhTK7r8pqlzRXL-niYvziNtGElkLRuWXafwY186ix2UXRpCu7AX5pAIQmHKVcqbpTtQEaw69ezk5WysqN2P2netztpH4g-qlgl653I", "state"=>"984e66e4c6b0817a7dcaa48cd9aae335145979be112e55b0"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT 1[0m  [["uid", "1237346371"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("uid", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["uid", "1237346371"], ["created_at", "2016-10-12 15:35:06.153852"], ["updated_at", "2016-10-12 15:35:06.153852"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "display_name" = ?, "email" = ?, "birthdate" = ?, "spotify_hash" = ?, "image" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["display_name", "Chris Shei"], ["email", "cks856@gmail.com"], ["birthdate", "1993-04-21"], ["spotify_hash", "---\nbirthdate: '1993-04-21'\ncountry: US\ndisplay_name: Chris Shei\nemail: cks856@gmail.com\nfollowers: !ruby/hash:OmniAuth::AuthHash\n  href: \n  total: 24\nimages:\n- !ruby/hash:OmniAuth::AuthHash\n  height: \n  url: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\n  width: \nproduct: premium\nexternal_urls: !ruby/hash:OmniAuth::AuthHash\n  spotify: https://open.spotify.com/user/1237346371\nhref: https://api.spotify.com/v1/users/1237346371\nid: '1237346371'\ntype: user\nuri: spotify:user:1237346371\ncredentials: !ruby/hash:OmniAuth::AuthHash\n  token: BQB2VzTXFvmGngv8TcBmqhuG_8y-TAVYqV08526F43ym-XMAvic5b0jHmpcXy3y8xiayUmXNntVcqjbw3QN_0yBemRfw6KrWgiDVXI30WzaYUdFc6FZs6UamdRJLRCxVdmq_jfBhyRzrUQWoUKyiguJulRJ0PKvs5zqCzj1Xy1rSZvDjY9ZMG0bfz8XiiqstQdB7Y_RNg32HVODopAbjZXfM92AQq5Av3bQhUi4L8aE\n  refresh_token: AQASC0vXRx0DZ3TIpAJ0AblTeVRw55Z1Kk1eimUyYlwkbETl1Sof8h4Llww_qs_A403RT_KlzxN3Zqx7MlNRMrHl30fokX_4AhQsQ-mBRCqWjTqIuSV9UqeyFXqV3Uzh1Fw\n  expires_at: 1476290105\n  expires: true\n"], ["image", "--- !ruby/hash:OmniAuth::AuthHash\nheight: \nurl: https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13255952_10156919569525158_3527521495729284073_n.jpg?oh=26b249e303ba94b5887baa802b6006bb&oe=589F5AC1\nwidth: \n"], ["updated_at", "2016-10-12 15:35:06.167179"], ["id", 1]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/welcome
+Completed 302 Found in 61ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-12 11:35:06 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1mSELECT "events".* FROM "events" WHERE "events"."host_id" = ?[0m  [["host_id", 1]]
+  Rendered users/home.html.erb within layouts/application (63.2ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 131ms (Views: 104.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-12 11:35:06 -0400
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m

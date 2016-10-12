@@ -6,7 +6,9 @@ class UserAdapter
     user.update(
       :display_name => hash["display_name"],
       :email => hash["email"],
-      :spotify_hash => spotify_user.to_hash
+      :spotify_hash => spotify_user.to_hash,
+      :birthdate => hash["birthdate"],
+      :image => hash["images"].first
     )
     user
   end

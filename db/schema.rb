@@ -55,13 +55,15 @@ ActiveRecord::Schema.define(version: 20161011232059) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "uid",             limit: 8
+    t.string   "uid"
     t.string   "display_name"
-    t.string   "password_digest"
     t.string   "email"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
     t.text     "spotify_hash"
+    t.date     "birthdate"
+    t.string   "image"
+    t.string   "username"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

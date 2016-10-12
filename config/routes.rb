@@ -11,6 +11,5 @@ Rails.application.routes.draw do
   resources :songs, only: [:create]
   resources :events do
     get 'guest', on: :member
-    get 'refresh_playlist', on: :member
   end
 end
