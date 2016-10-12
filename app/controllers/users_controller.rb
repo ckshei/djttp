@@ -33,7 +33,4 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
   
-  def user_params
-    params.require(:user).permit(:uid, :display_name, :password, :password_confirmation, :email, :top_tracks, :top_artists, songs_attributes:[:name])
-  end
 end

@@ -20,7 +20,8 @@ class Event < ActiveRecord::Base
       event_id: self.id,
       host_id: user.id, 
       spotify_playlist_id: spotify_playlist.id,
-      spotify_url: spotify_playlist.external_urls["spotify"]
+      spotify_url: spotify_playlist.external_urls["spotify"],
+      rsvp_url: Rails.application.routes.url_helpers.rsvp_event_url(self, host: "localhost:3000")
     )
     playlist.save
   end

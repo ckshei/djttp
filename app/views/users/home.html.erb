@@ -2,8 +2,8 @@
   <div class="row event">
     <%= form_for @event do |f| %>
       <div class="col-xs-12">
-        Name: <%= f.text_field :name %>
-        Date: <%= f.date_field :date %>
+        Name: <%= f.text_field :name, :required => true %>
+        Date: <%= f.date_field :date, :required => true %>
       </div>
       <div class="col-xs-12">
         
@@ -13,18 +13,39 @@
     <% end %>
   </div>
 
+
+  <ul id="events-list">
+    
+  </ul>
 <% current_user.events.each do |event| %>
   <p class="event-date"><%= event.date %></p>
   <div class="row event">
     <div class="divider"></div>
       <div class="col-xs-12 verticalLine">
-        <h3 class='event-name'><%=link_to(event.name, event_path(event)) %></h3>    
+        <h3 class='event-name'><%=link_to(event.name, event_path(event)) %></h3>
+        <%= link_to("edit", edit_event_path(event)) %>
         <p>Guest Count: <%= event.guests.count %></p>
         <a href="<%= event.playlist.spotify_url %>" target="_blank">Spotify Playlist Link</a>
       </div>
       <div class="col-xs-12">
-        <%= link_to("edit", edit_event_path(event)) %>
+        <h3>Link to RSVP (click to copy)</h3>
+        <%= url_for([:rsvp, event, only_path: false]) %>
       </div>
   </div>
 <% end %>
 
+<script type="text/javascript" charset="utf-8">
+ $(function () {
+   $('form').submit(function(event) {
+     event.preventDefault();
+
+     var values = $(this).serialize();
+     var posting = $.post('/events', values);
+
+     posting.done(function(data) {
+      console.log(data) 
+       <%# we need to do something here %>
+     });
+   });
+ }); 
+</script>

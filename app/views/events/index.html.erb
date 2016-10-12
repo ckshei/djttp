@@ -2,7 +2,7 @@
 <% @events.each do |event| %>
   <%= event.name %>
   <%= event.date %>
-  <%= link_to("RSVP", :controller => :events, :action => :guest, :id => event.id) %>
+  <%= link_to("RSVP", :controller => :events, :action => :rsvp, :id => event.id) %>
 <% end %>
 
 

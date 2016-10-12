@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     # @event.guests << current_user
     @event.create_playlist
     @event.save
-    redirect_to event_path(@event) 
+    render json: @event, status:201
   end
 
   def edit
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def destroy
   end
 
-  def guest
+  def rsvp
     event = Event.find(params[:id])
     current_user
     if event.guests.include?(@current_user)
@@ -44,11 +44,6 @@ class EventsController < ApplicationController
     end    
   end
 
-  def refresh_playlist
-    event = Event.find(params[:id])
-    event.refresh_playlist
-    redirect_to event_path(event)
-  end
   private
 
   def event_params(*args)
