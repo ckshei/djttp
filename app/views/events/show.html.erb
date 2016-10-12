@@ -12,7 +12,7 @@ Guest List:
 <%= link_to("Refresh Playlist", :controller => :events, :action=> :refresh_playlist) %>
 <% end %>
 
-<% @event.playlist.songs.each do |song| %>
-  <%= song.name %>
-  <br>
+<% @event.playlist.playlist_songs.each do |playlist_song| %>
+  <%= Song.find(playlist_song.song_id).name %>
+  <%= playlist_song.request_count %>
 <% end %>

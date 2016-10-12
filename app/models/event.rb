@@ -15,8 +15,6 @@ class Event < ActiveRecord::Base
     user.top_tracks(limit:5).each do |track_id| 
       song = SongAdapter.find_or_create_by(track_id)
       playlist.songs << song
-      playlist_song = PlaylistSong.find_by(song_id: song.id, playlist_id: playlist.id)
-      playlist_song.update(request_count: playlist_song.request_count + 1)
     end
     playlist.update(
       event_id: self.id,
@@ -39,17 +37,7 @@ class Event < ActiveRecord::Base
         playlist.songs << song
       end
     end
-    byebug
     spotify_playlist.add_tracks!(user.top_tracks(limit: 5)) 
   end
 
-  def refresh_playlist
-    spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.playlist_id)
-    playlist.add_songs.each do |id|
-      add_tracks << RSpotify::Track.find(id)
-    end
-    playlist.add_songs.clear
-    playlist.save
-    spotify_playlist.add_tracks!(add_tracks)
-  end
 end
