@@ -26345,3 +26345,537 @@ Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde45
 
 
 Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 18:41:13 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSongs (20161011232010)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "spotify_id" varchar, "artist" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20161011232010"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePlaylistSongs (20161011232059)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "playlist_songs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "playlist_id" integer, "song_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20161011232059"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 19:50:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1mSELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?[0m  [["guest_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 2]]
+  [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 3]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 5]]
+  [1m[36mPlaylist Load (0.3ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 5]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 8]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 8]]
+  Rendered users/home.html.erb within layouts/application (106.1ms)
+Completed 500 Internal Server Error in 184ms (ActiveRecord: 3.1ms)
+
+ActionView::Template::Error (undefined method `url' for nil:NilClass):
+    20:       <div class="col-xs-12 verticalLine">
+    21:         <h3 class='event-name'><%=link_to(event.name, event_path(event)) %></h3>    
+    22:         <p>Guest Count: <%= event.guests.count %></p>
+    23:         <a href="<%= event.playlist.url %>" target="_blank">Spotify Playlist Link</a>
+    24:       </div>
+    25:       <div class="col-xs-12">
+    26:         <%= link_to("edit", edit_event_path(event)) %>
+  app/views/users/home.html.erb:23:in `block in _app_views_users_home_html_erb___4452552937314844670_70188888350640'
+  app/views/users/home.html.erb:16:in `_app_views_users_home_html_erb___4452552937314844670_70188888350640'
+  app/controllers/users_controller.rb:26:in `block (2 levels) in home'
+  app/controllers/users_controller.rb:25:in `home'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (78.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (61.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (154.2ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 19:50:45 -0400
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?[0m  [["guest_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 2]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 3]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 5]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 5]]
+  Rendered users/home.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_navbar.html.erb (1.2ms)
+Completed 200 OK in 413ms (Views: 409.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 19:50:45 -0400
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:50:50 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rr325mYDksp4FmvxEaazUlOL194xr3GwN74Uz01gB7pH8AbJBYiw0Gr6dVcNTACN6Ar09a9BADMrWtVzdqof/w==", "event"=>{"name"=>"frawtegh", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "frawtegh"], ["host_id", 1], ["created_at", "2016-10-11 23:50:50.272454"], ["updated_at", "2016-10-11 23:50:50.272454"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 9], ["guest_id", 1], ["created_at", "2016-10-11 23:50:50.281706"], ["updated_at", "2016-10-11 23:50:50.281706"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 1993ms (ActiveRecord: 3.0ms)
+
+NoMethodError (undefined method `artist' for #<RSpotify::Track:0x007fac3e7b6898>):
+  app/models/song_adapter.rb:4:in `create'
+  app/models/event.rb:15:in `block in create_playlist'
+  app/models/event.rb:14:in `each'
+  app/models/event.rb:14:in `create_playlist'
+  app/controllers/events_controller.rb:8:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (69.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (143.5ms)
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:51:27 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rr325mYDksp4FmvxEaazUlOL194xr3GwN74Uz01gB7pH8AbJBYiw0Gr6dVcNTACN6Ar09a9BADMrWtVzdqof/w==", "event"=>{"name"=>"frawteghfdsa", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "frawteghfdsa"], ["host_id", 1], ["created_at", "2016-10-11 23:51:27.682341"], ["updated_at", "2016-10-11 23:51:27.682341"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 10], ["guest_id", 1], ["created_at", "2016-10-11 23:51:27.704439"], ["updated_at", "2016-10-11 23:51:27.704439"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 74875ms (ActiveRecord: 4.0ms)
+
+SystemExit (exit):
+  app/models/song_adapter.rb:5:in `create'
+  app/models/event.rb:15:in `block in create_playlist'
+  app/models/event.rb:14:in `each'
+  app/models/event.rb:14:in `create_playlist'
+  app/controllers/events_controller.rb:8:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (118.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (43.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (245.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (91.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (188.1ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 19:53:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1mSELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?[0m  [["guest_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 2]]
+  [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 3]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 3]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 5]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 5]]
+  Rendered users/home.html.erb within layouts/application (103.6ms)
+  Rendered layouts/_navbar.html.erb (1.8ms)
+Completed 200 OK in 587ms (Views: 519.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 19:53:02 -0400
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:53:21 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrBJwC5tQak3WQK3qySZNzoLHrkMIxWZUrfhEd8Ed9tH/bnvTeZjsyW1HBG3zirogYo9kpLNZBpOUyCt5M5vng==", "event"=>{"name"=>"asdfasdfasdf", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "asdfasdfasdf"], ["host_id", 1], ["created_at", "2016-10-11 23:53:21.347479"], ["updated_at", "2016-10-11 23:53:21.347479"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 11], ["guest_id", 1], ["created_at", "2016-10-11 23:53:21.356667"], ["updated_at", "2016-10-11 23:53:21.356667"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "songs" ("name", "id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Right As Rain"], ["id", 2], ["artist", "Adele"], ["created_at", "2016-10-11 23:53:22.703655"], ["updated_at", "2016-10-11 23:53:22.703655"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "songs" ("name", "id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Games Continued - Radio Edit"], ["id", 64], ["artist", "Bakermat"], ["created_at", "2016-10-11 23:53:22.707345"], ["updated_at", "2016-10-11 23:53:22.707345"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "songs" ("name", "id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "River Flows In You - Original"], ["id", 47], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:53:22.710333"], ["updated_at", "2016-10-11 23:53:22.710333"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "songs" ("name", "id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Netflix and Chill"], ["id", 2], ["artist", "Drianu"], ["created_at", "2016-10-11 23:53:22.713604"], ["updated_at", "2016-10-11 23:53:22.713604"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Completed 500 Internal Server Error in 1374ms (ActiveRecord: 8.9ms)
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: songs.id: INSERT INTO "songs" ("name", "id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)):
+  app/models/song_adapter.rb:4:in `create'
+  app/models/event.rb:15:in `block in create_playlist'
+  app/models/event.rb:14:in `each'
+  app/models/event.rb:14:in `create_playlist'
+  app/controllers/events_controller.rb:8:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (71.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (162.4ms)
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:55:17 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrBJwC5tQak3WQK3qySZNzoLHrkMIxWZUrfhEd8Ed9tH/bnvTeZjsyW1HBG3zirogYo9kpLNZBpOUyCt5M5vng==", "event"=>{"name"=>"fdsaasdfasdfasdf", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "fdsaasdfasdfasdf"], ["host_id", 1], ["created_at", "2016-10-11 23:55:17.270966"], ["updated_at", "2016-10-11 23:55:17.270966"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 12], ["guest_id", 1], ["created_at", "2016-10-11 23:55:17.287752"], ["updated_at", "2016-10-11 23:55:17.287752"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Right As Rain"], ["spotify_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"], ["created_at", "2016-10-11 23:55:19.045508"], ["updated_at", "2016-10-11 23:55:19.045508"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Games Continued - Radio Edit"], ["spotify_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"], ["created_at", "2016-10-11 23:55:19.049938"], ["updated_at", "2016-10-11 23:55:19.049938"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "River Flows In You - Original"], ["spotify_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:55:19.053335"], ["updated_at", "2016-10-11 23:55:19.053335"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Netflix and Chill"], ["spotify_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"], ["created_at", "2016-10-11 23:55:19.056243"], ["updated_at", "2016-10-11 23:55:19.056243"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "I - Original"], ["spotify_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:55:19.059549"], ["updated_at", "2016-10-11 23:55:19.059549"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "playlists" ("event_id", "host_id", "playlist_id", "current_songs", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["event_id", 12], ["host_id", 1237346371], ["playlist_id", "0aOBwBHXCVIBZmyfUtwecl"], ["current_songs", "--- !ruby/object:Set\nhash:\n  2Q2SougPFYpLWVZVx1dRNK: true\n  64dkTKKNLwbjBuU4xnS2ei: true\n  47ZWr1Nb0PUgmKgyg5JkgO: true\n  2v7N3qYHs6mB18nZR0fxD2: true\n  5bkeHKA0sF54YvLCmFnluH: true\n"], ["url", "http://open.spotify.com/user/1237346371/playlist/0aOBwBHXCVIBZmyfUtwecl"], ["created_at", "2016-10-11 23:55:19.227893"], ["updated_at", "2016-10-11 23:55:19.227893"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/events/12
+Completed 302 Found in 2009ms (ActiveRecord: 22.2ms)
+
+
+Started GET "/events/12" for ::1 at 2016-10-11 19:55:19 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1[0m  [["id", 12]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 12]]
+  [1m[36mPlaylist Load (0.4ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 12]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered events/show.html.erb within layouts/application (601.1ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 664ms (Views: 657.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:56:44 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrBJwC5tQak3WQK3qySZNzoLHrkMIxWZUrfhEd8Ed9tH/bnvTeZjsyW1HBG3zirogYo9kpLNZBpOUyCt5M5vng==", "event"=>{"name"=>"fdsaasdfasdfasdffdsa", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "fdsaasdfasdfasdffdsa"], ["host_id", 1], ["created_at", "2016-10-11 23:56:44.461809"], ["updated_at", "2016-10-11 23:56:44.461809"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["event_id", 13], ["guest_id", 1], ["created_at", "2016-10-11 23:56:44.478464"], ["updated_at", "2016-10-11 23:56:44.478464"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Right As Rain"], ["spotify_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"], ["created_at", "2016-10-11 23:56:45.677636"], ["updated_at", "2016-10-11 23:56:45.677636"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 1246ms (ActiveRecord: 7.4ms)
+
+NoMethodError (undefined method `<<' for #<Playlist:0x007f849240a768>):
+  app/models/event.rb:17:in `block in create_playlist'
+  app/models/event.rb:15:in `each'
+  app/models/event.rb:15:in `create_playlist'
+  app/controllers/events_controller.rb:8:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (64.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (140.8ms)
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:57:14 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrBJwC5tQak3WQK3qySZNzoLHrkMIxWZUrfhEd8Ed9tH/bnvTeZjsyW1HBG3zirogYo9kpLNZBpOUyCt5M5vng==", "event"=>{"name"=>"fdsaasdfasdfasdffdsafdsa", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "fdsaasdfasdfasdffdsafdsa"], ["host_id", 1], ["created_at", "2016-10-11 23:57:14.486552"], ["updated_at", "2016-10-11 23:57:14.486552"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["event_id", 14], ["guest_id", 1], ["created_at", "2016-10-11 23:57:14.501683"], ["updated_at", "2016-10-11 23:57:14.501683"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Right As Rain"], ["spotify_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"], ["created_at", "2016-10-11 23:57:16.047218"], ["updated_at", "2016-10-11 23:57:16.047218"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Completed 500 Internal Server Error in 1604ms (ActiveRecord: 6.3ms)
+
+NoMethodError (undefined method `songs' for #<Playlist:0x007f84939578a0>):
+  app/models/event.rb:17:in `block in create_playlist'
+  app/models/event.rb:15:in `each'
+  app/models/event.rb:15:in `create_playlist'
+  app/controllers/events_controller.rb:8:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (68.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /usr/local/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (138.3ms)
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:58:12 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rrBJwC5tQak3WQK3qySZNzoLHrkMIxWZUrfhEd8Ed9tH/bnvTeZjsyW1HBG3zirogYo9kpLNZBpOUyCt5M5vng==", "event"=>{"name"=>"fdsaasdfasdfasdfffdsaasdf", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "fdsaasdfasdfasdfffdsaasdf"], ["host_id", 1], ["created_at", "2016-10-11 23:58:12.892846"], ["updated_at", "2016-10-11 23:58:12.892846"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["event_id", 15], ["guest_id", 1], ["created_at", "2016-10-11 23:58:12.911299"], ["updated_at", "2016-10-11 23:58:12.911299"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Right As Rain"], ["spotify_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"], ["created_at", "2016-10-11 23:58:14.408715"], ["updated_at", "2016-10-11 23:58:14.408715"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Games Continued - Radio Edit"], ["spotify_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"], ["created_at", "2016-10-11 23:58:14.446045"], ["updated_at", "2016-10-11 23:58:14.446045"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "River Flows In You - Original"], ["spotify_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:58:14.452216"], ["updated_at", "2016-10-11 23:58:14.452216"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Netflix and Chill"], ["spotify_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"], ["created_at", "2016-10-11 23:58:14.463324"], ["updated_at", "2016-10-11 23:58:14.463324"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "I - Original"], ["spotify_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:58:14.471211"], ["updated_at", "2016-10-11 23:58:14.471211"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "playlists" ("event_id", "host_id", "playlist_id", "current_songs", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["event_id", 15], ["host_id", 1237346371], ["playlist_id", "7Hk44eif0lZBYaddmsWX2r"], ["current_songs", "--- !ruby/object:Set\nhash:\n  2Q2SougPFYpLWVZVx1dRNK: true\n  64dkTKKNLwbjBuU4xnS2ei: true\n  47ZWr1Nb0PUgmKgyg5JkgO: true\n  2v7N3qYHs6mB18nZR0fxD2: true\n  5bkeHKA0sF54YvLCmFnluH: true\n"], ["url", "http://open.spotify.com/user/1237346371/playlist/7Hk44eif0lZBYaddmsWX2r"], ["created_at", "2016-10-11 23:58:14.873126"], ["updated_at", "2016-10-11 23:58:14.873126"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 72], ["playlist_id", 5], ["created_at", "2016-10-11 23:58:14.880816"], ["updated_at", "2016-10-11 23:58:14.880816"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 73], ["playlist_id", 5], ["created_at", "2016-10-11 23:58:14.882308"], ["updated_at", "2016-10-11 23:58:14.882308"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 74], ["playlist_id", 5], ["created_at", "2016-10-11 23:58:14.888372"], ["updated_at", "2016-10-11 23:58:14.888372"]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 75], ["playlist_id", 5], ["created_at", "2016-10-11 23:58:14.889619"], ["updated_at", "2016-10-11 23:58:14.889619"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 76], ["playlist_id", 5], ["created_at", "2016-10-11 23:58:14.890677"], ["updated_at", "2016-10-11 23:58:14.890677"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/events/15
+Completed 302 Found in 2048ms (ActiveRecord: 26.9ms)
+
+
+Started GET "/events/15" for ::1 at 2016-10-11 19:58:14 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 15]]
+  [1m[36mPlaylist Load (0.2ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 15]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered events/show.html.erb within layouts/application (916.1ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 972ms (Views: 968.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/welcome" for ::1 at 2016-10-11 19:58:27 -0400
+Processing by UsersController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mEvent Load (0.3ms)[0m  SELECT "events".* FROM "events" INNER JOIN "event_guests" ON "events"."id" = "event_guests"."event_id" WHERE "event_guests"."guest_id" = ?  [["guest_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mPlaylist Load (0.2ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mPlaylist Load (0.1ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?[0m  [["event_id", 5]]
+  [1m[35mPlaylist Load (0.3ms)[0m  SELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1  [["event_id", 5]]
+  Rendered users/home.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_navbar.html.erb (0.7ms)
+Completed 200 OK in 57ms (Views: 54.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/event.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/_grid.self-507c368b4cf36d1e5317c7b3637bc09de634733cfe22d79f7418a5ed0a8d3d05.css?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/application.self-6539a3132db3f0273859a3d245e8f6d6dc6f37c3feb39cce6d81b036ed2b1ce7.css?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/user.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/event.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-10-11 19:58:27 -0400
+
+
+Started POST "/events" for ::1 at 2016-10-11 19:58:34 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROo5dfKMagGVPC+1o6nBWSUCMLyoVfflbT8+kXQcS9qtp8lakQdIG4fQMRO/Q3KGnoMTlza7hmZx2/8tT9ZTnw==", "event"=>{"name"=>"fdsafdsarvawge", "date"=>"", "host_id"=>"1"}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "events" ("name", "host_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "fdsafdsarvawge"], ["host_id", 1], ["created_at", "2016-10-11 23:58:34.124891"], ["updated_at", "2016-10-11 23:58:34.124891"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "event_guests" ("event_id", "guest_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["event_id", 16], ["guest_id", 1], ["created_at", "2016-10-11 23:58:34.129793"], ["updated_at", "2016-10-11 23:58:34.129793"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Right As Rain"], ["spotify_id", "2Q2SougPFYpLWVZVx1dRNK"], ["artist", "Adele"], ["created_at", "2016-10-11 23:58:35.215309"], ["updated_at", "2016-10-11 23:58:35.215309"]]
+  [1m[36m (8.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Games Continued - Radio Edit"], ["spotify_id", "64dkTKKNLwbjBuU4xnS2ei"], ["artist", "Bakermat"], ["created_at", "2016-10-11 23:58:35.233291"], ["updated_at", "2016-10-11 23:58:35.233291"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "River Flows In You - Original"], ["spotify_id", "47ZWr1Nb0PUgmKgyg5JkgO"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:58:35.239514"], ["updated_at", "2016-10-11 23:58:35.239514"]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Netflix and Chill"], ["spotify_id", "2v7N3qYHs6mB18nZR0fxD2"], ["artist", "Drianu"], ["created_at", "2016-10-11 23:58:35.244530"], ["updated_at", "2016-10-11 23:58:35.244530"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "songs" ("name", "spotify_id", "artist", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "I - Original"], ["spotify_id", "5bkeHKA0sF54YvLCmFnluH"], ["artist", "Yiruma"], ["created_at", "2016-10-11 23:58:35.251469"], ["updated_at", "2016-10-11 23:58:35.251469"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "playlists" ("event_id", "host_id", "playlist_id", "current_songs", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["event_id", 16], ["host_id", 1237346371], ["playlist_id", "4oIDT9oRuw964c6sj1zxpV"], ["current_songs", "--- !ruby/object:Set\nhash:\n  2Q2SougPFYpLWVZVx1dRNK: true\n  64dkTKKNLwbjBuU4xnS2ei: true\n  47ZWr1Nb0PUgmKgyg5JkgO: true\n  2v7N3qYHs6mB18nZR0fxD2: true\n  5bkeHKA0sF54YvLCmFnluH: true\n"], ["url", "http://open.spotify.com/user/1237346371/playlist/4oIDT9oRuw964c6sj1zxpV"], ["created_at", "2016-10-11 23:58:35.456941"], ["updated_at", "2016-10-11 23:58:35.456941"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 77], ["playlist_id", 6], ["created_at", "2016-10-11 23:58:35.462340"], ["updated_at", "2016-10-11 23:58:35.462340"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 78], ["playlist_id", 6], ["created_at", "2016-10-11 23:58:35.467904"], ["updated_at", "2016-10-11 23:58:35.467904"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 79], ["playlist_id", 6], ["created_at", "2016-10-11 23:58:35.482194"], ["updated_at", "2016-10-11 23:58:35.482194"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["song_id", 80], ["playlist_id", 6], ["created_at", "2016-10-11 23:58:35.493455"], ["updated_at", "2016-10-11 23:58:35.493455"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "playlist_songs" ("song_id", "playlist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["song_id", 81], ["playlist_id", 6], ["created_at", "2016-10-11 23:58:35.495551"], ["updated_at", "2016-10-11 23:58:35.495551"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/events/16
+Completed 302 Found in 1387ms (ActiveRecord: 20.7ms)
+
+
+Started GET "/events/16" for ::1 at 2016-10-11 19:58:35 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mEvent Load (0.1ms)[0m  [1mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "event_guests" ON "users"."id" = "event_guests"."guest_id" WHERE "event_guests"."event_id" = ?  [["event_id", 16]]
+  [1m[36mPlaylist Load (0.1ms)[0m  [1mSELECT  "playlists".* FROM "playlists" WHERE "playlists"."event_id" = ? LIMIT 1[0m  [["event_id", 16]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered events/show.html.erb within layouts/application (863.2ms)
+  Rendered layouts/_navbar.html.erb (1.9ms)
+Completed 200 OK in 902ms (Views: 899.2ms | ActiveRecord: 0.5ms)

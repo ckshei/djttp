@@ -12,6 +12,10 @@ class Event < ActiveRecord::Base
     spotify_playlist = user.create_playlist!("#{self.name}-playlist") 
     spotify_playlist.add_tracks!(user.top_tracks(limit: 5)) 
     playlist = Playlist.new
+    user.top_tracks(limit:5).each do |track_id| 
+      song = SongAdapter.create(track_id)
+      playlist.songs << song
+    end
     playlist.update(
       event_id: self.id,
       host_id: user.id, 

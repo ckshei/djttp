@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923194658) do
+ActiveRecord::Schema.define(version: 20161011232059) do
 
   create_table "event_guests", force: :cascade do |t|
     t.integer  "event_id"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20160923194658) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlist_songs", force: :cascade do |t|
+    t.integer  "playlist_id"
+    t.integer  "song_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "host_id"
@@ -37,6 +44,14 @@ ActiveRecord::Schema.define(version: 20160923194658) do
     t.string   "url"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "spotify_id"
+    t.string   "artist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
