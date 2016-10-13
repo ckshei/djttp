@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   get '/auth/spotify/callback', to: 'users#spotify'
   root 'events#index'
   post '/logout' => "users#logout"
-  resources :users do
-    resources :events, only: [:index]
-  end
+  resources :users
 
   resources :events do
     get 'rsvp', on: :member

@@ -21,23 +21,3 @@
     
   </ul>
 
-<script type="text/javascript" charset="utf-8">
- $(function () {
-   $('form').submit(function(event) {
-     event.preventDefault();
-
-     var values = $(this).serialize();
-     var posting = $.post('/events', values);
-
-     posting.done(function(event) {
-       if (event.id) {
-       var ev = new Event(event.id, event.name, event.date, event.playlist.spotify_url, event.playlist.rsvp_url, event.guest_count, event.event_url)
-       var markup = ev.createDiv()
-       $("#events-list").append(markup)
-       } else {
-         $("#error-messages").html(event.date[0])
-       }
-     });
-   });
- }); 
-</script>

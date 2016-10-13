@@ -28,8 +28,9 @@ class EventsController < ApplicationController
       redirect_to new_user_path
     end
     @event = Event.new
+    @events = current_user.events.all
     respond_to do |format|
-      format.html 
+      format.html {render :index}
       format.json {render json: @events}
     end
   end
