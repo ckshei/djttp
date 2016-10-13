@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :date, :guest_ids, :guest_count, :event_url
+  attributes :id, :name, :date, :guest_count, :event_url
   has_one :playlist
 
   def guest_count

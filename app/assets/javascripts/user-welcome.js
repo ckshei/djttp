@@ -27,8 +27,7 @@ class Event {
         <div class="divider"></div>
         <div class="col-xs-12 verticalLine">
           <h3 class='event-name'><a href="/events/${this.id}">${this.name}</a></h3>
-          <a href="${this.event_url}"> Edit </a>
-          <p>Guest Count:${this.guest_count} </p>
+          <p>Guest Count: ${this.guest_count} </p>
           <a href="${this.spotify_url}" target="_blank">Spotify Playlist Link</a>
         </div>
         <div class="col-xs-12">

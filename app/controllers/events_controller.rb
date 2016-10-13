@@ -6,8 +6,11 @@ class EventsController < ApplicationController
     @event = Event.create(event_params(:name, :date, :host_id))
     # @event.guests << current_user
     @event.create_playlist
-    @event.save
-    render json: @event, status:201
+    if @event.save
+      render json: @event, status:201
+    else
+      render json: @event.errors
+    end
   end
 
   def edit
@@ -21,11 +24,22 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    if !current_user
+      redirect_to new_user_path
+    end
+    @event = Event.new
+    respond_to do |format|
+      format.html 
+      format.json {render json: @events}
+    end
   end
 
   def show
     @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @event}
+    end
   end
 
   def destroy
@@ -42,6 +56,22 @@ class EventsController < ApplicationController
       event.add_songs(@current_user)
       redirect_to event_path(event)
     end    
+  end
+
+  def guests
+    event = Event.find(params[:id])
+    @guests = event.guests
+    respond_to do |format|
+      format.json {render json: @guests}
+    end
+  end
+
+  def playlist
+    event = Event.find(params[:id])
+    @playlist = event.playlist
+    respond_to do |format|
+      format.json {render json: @playlist, serializer: EventPlaylistSerializer}
+    end
   end
 
   private

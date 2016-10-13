@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    redirect_to root_path unless session.include? :user_id
+    redirect_to new_user_path unless session.include? :user_id
   end
 
   def current_user

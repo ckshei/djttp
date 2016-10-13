@@ -6,6 +6,16 @@ class Event < ActiveRecord::Base
   has_many :songs, through: :guests
   scope :expired, -> { where('date < ?', Date.today) }
 
+  validates :name, presence: true
+  validate :date_cannot_be_in_the_past
+
+  def date_cannot_be_in_the_past
+    return unless date
+    if date < Date.today
+      errors.add(:date, "Cannot be in the past")
+    end
+  end
+
   def create_playlist
     hash = self.host.spotify_hash
     user = RSpotify::User.new(hash)
