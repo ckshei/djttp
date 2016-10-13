@@ -1,6 +1,5 @@
 App.eventsIndex = {
   run: function() {
-    console.log('hitting second part')
     $.get("/events.json", function(data) {
       data.map(function(event) {
         var ev = new Event(event.id, event.name, event.date, event.playlist.spotify_url, event.playlist.rsvp_url, event.guest_count, event.event_url)
