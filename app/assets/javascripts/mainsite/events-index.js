@@ -1,10 +1,9 @@
-App.eventsIndex = {
-  run: function() {
+App.eventsIndex = { run: function() {
     $.get("/events.json", function(data) {
-      data.map(function(event) {
-        var ev = new Event(event.id, event.name, event.date, event.playlist.spotify_url, event.playlist.rsvp_url, event.guest_count, event.event_url)
+      data.map(function(event_data) {
+        var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.rsvp_url, event_data.guest_count, event_data.event_url)
         var markup = ev.createDiv()
-        $("#events-list").append(markup)
+        $("#js-events-list").append(markup)
       });
     });
 
@@ -25,13 +24,13 @@ App.eventsIndex = {
       <p class="event-date">${this.date}</p>
       <div class="row event">
           <div class="divider"></div>
-          <div class="col-xs-12 verticalLine">
+          <div class="col-xs-12 verticalline">
             <h3 class='event-name'><a href="/events/${this.id}">${this.name}</a></h3>
-            <p>Guest Count: ${this.guest_count} </p>
-            <a href="${this.spotify_url}" target="_blank">Spotify Playlist Link</a>
+            <p>guest count: ${this.guest_count} </p>
+            <a href="${this.spotify_url}" target="_blank">spotify playlist link</a>
           </div>
           <div class="col-xs-12">
-            <h3>Link to RSVP (click to copy)</h3>
+            <h3>link to rsvp (click to copy)</h3>
             <p> ${this.rsvp_url} </p>
           </div>
       </div>
@@ -45,14 +44,16 @@ App.eventsIndex = {
 
      var values = $(this).serialize();
      var posting = $.post('/events', values);
-
-     posting.done(function(event) {
-       if (event.id) {
-       var ev = new Event(event.id, event.name, event.date, event.playlist.spotify_url, event.playlist.rsvp_url, event.guest_count, event.event_url)
+     posting.done(function(event_data) {
+       if (event_data.id) {
+        var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.rsvp_url, event_data.guest_count, event_data.event_url)
        var markup = ev.createDiv()
-       $("#events-list").append(markup)
+         $("#js-events-list").prepend(markup)
+         $("#event_name").val('')
+         $("#event_date").val('')
        } else {
-         $("#error-messages").html(event.date[0])
+         debugger
+         $("#js-error-messages").html(event_data.date[0])
        }
      });
    });

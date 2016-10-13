@@ -1,27 +1,17 @@
 <h1>Event#show</h1>
-Guest List:
+<%= link_to("RSVP", :controller => :events, :action => :rsvp) unless @event.guests.include? current_user%>
+<div class="js-event" data-id="<%= @event.id%>">
+  
+</div>
 <% @event.guests.each do |guest| %>
   <%= guest.display_name %>
   <br>
 <% end %>
-  <p class="event-date"><%= @event.date %></p>
-  <div class="row event">
-    <div class="divider"></div>
-      <div class="col-xs-12 verticalLine">
-        <h3 class='event-name'><%=link_to(@event.name, event_path(@event)) %></h3>
-        <%= link_to("edit", edit_event_path(@event)) %>
-        <p>Guest Count: <%= @event.guests.count %></p>
-        <a href="<%= @event.playlist.spotify_url %>" target="_blank">Spotify Playlist Link</a>
-      </div>
-      <div class="col-xs-12">
-        <h3>Link to RSVP (click to copy)</h3>
-        <%= url_for([:rsvp, @event, only_path: false]) %>
-      </div>
-  </div>
-
-<%= link_to("RSVP", :controller => :events, :action => :rsvp) unless @event.guests.include? current_user%>
 
 <h1>Playlist Data</h1>
-<% @event.playlist.playlist_songs.each do |playlist_song| %>
-  <p><%= Song.find(playlist_song.song_id).name %>  |  <%= playlist_song.request_count %></p>
-<% end %>
+<table class="js-playlist-data">
+  <tr>
+      <th> Song Name </th>
+      <th> Request Count </th>
+    </tr> 
+</table>

@@ -13,3 +13,4 @@ var App = App || {};
 $(document).on('turbolinks:load', function () {
   App.init();
 });
+
