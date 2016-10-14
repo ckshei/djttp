@@ -49722,3 +49722,10 @@ DEPRECATION WARNING: You are calling a `*_path` helper with the `only_path` opti
   Rendered events/show.html.erb within layouts/application (43.7ms)
   Rendered layouts/_navbar.html.erb (0.8ms)
 Completed 200 OK in 71ms (Views: 65.4ms | ActiveRecord: 2.2ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAddSongsToPlaylists (20161014005031)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "playlists" ADD "add_songs" text_field[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20161014005031"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"

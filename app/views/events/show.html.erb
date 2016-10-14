@@ -8,6 +8,10 @@
   <br>
 <% end %>
 
+<% if @event.host == current_user && @event.playlist.add_songs.any? %>
+<%= link_to("Refresh Playlist", :controller => :events, :action=> :refresh_playlist) %>
+<% end %>
+
 <h1>Playlist Data</h1>
 <table class="js-playlist-data">
   <tr>

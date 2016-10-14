@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
   def add_songs(user_obj)
     user = RSpotify::User.new(user_obj.spotify_hash)
     spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.spotify_playlist_id)
-    add_songs = []
+    add_songs = playlist.add_songs
     user.top_tracks(limit: 5).each do |spotify_track|
       song = SongAdapter.find_or_create_by(spotify_track)
       if playlist.songs.include? song
@@ -49,9 +49,12 @@ class Event < ActiveRecord::Base
         playlist.songs << song
       end
     end
-    if add_songs.any?
-      spotify_playlist.add_tracks!(add_songs) 
-    end
+    playlist.save
+  end
+
+  def refresh_playlist
+    spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.spotify_playlist_id)
+    spotify_playlist.add_tracks!(playlist.add_songs)
   end
 
 end

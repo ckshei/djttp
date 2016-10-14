@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get 'rsvp', on: :member
     get 'guests', on: :member
     get 'playlist', on: :member
+    get 'refresh_playlist', on: :member
   end
 end

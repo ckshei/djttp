@@ -75,6 +75,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def refresh_playlist
+    event = Event.find(params[:id])
+    event.refresh_playlist
+    redirect_to event_path(event)
+  end
+
   private
 
   def event_params(*args)
