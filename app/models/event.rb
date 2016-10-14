@@ -55,6 +55,8 @@ class Event < ActiveRecord::Base
   def refresh_playlist
     spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.spotify_playlist_id)
     spotify_playlist.add_tracks!(playlist.add_songs)
+    playlist.add_songs.clear
+    playlist.save
   end
 
 end
