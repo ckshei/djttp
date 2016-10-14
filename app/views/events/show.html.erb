@@ -1,18 +1,10 @@
-<h1>Event#show</h1>
+<h1>DJTTP: <%= @event.name %></h1>
 <%= link_to("RSVP", :controller => :events, :action => :rsvp) unless @event.guests.include? current_user%>
 <div class="js-event" data-id="<%= @event.id%>">
   
 </div>
-<% @event.guests.each do |guest| %>
-  <%= guest.display_name %>
-  <br>
-<% end %>
 
-<% if @event.host == current_user && @event.playlist.add_songs.any? %>
-<%= link_to("Refresh Playlist", :controller => :events, :action=> :refresh_playlist) %>
-<% end %>
-
-<h1>Playlist Data</h1>
+<h2>Playlist Data</h2>
 <table class="js-playlist-data">
   <tr>
       <th> Song Name </th>

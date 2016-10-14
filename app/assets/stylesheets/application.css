@@ -38,8 +38,14 @@ div.event {
   padding: 1em;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h3, h4, h5, h6, p {
   margin: 0;
+}
+
+h1, h2 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0.5em;
 }
 
 p.event-date {
@@ -62,16 +68,23 @@ ul li {
 }
 
 table, caption, tbody, tfoot, thead, tr, th, td {
-  margin: 0;
-  padding: 0;
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+  padding: 0.3em;
   border: 0;
   outline: 0;
+  text-align: left;
   font-size: 100%;
-  vertical-align: baseline;
+  vertical-align: middle;
   background: transparent;
   border-collapse: collapse;
 }
 
+th {
+  font-size: 1.2em;
+  border-bottom: 1px solid #ddd;
+}
 .divider{
     position:absolute;
     left:50%;
@@ -80,12 +93,34 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     border-left:1px solid white;
 }
 
+.rsvp {
+  text-align: center;
+  padding: 1em;
+}
+
+.event-name {
+  font-size: 1.3em;
+  text-decoration: underline;
+  margin-bottom: 0.6em;
+}
+
+.event-details p {
+  margin-top: 0;
+  margin-bottom: 0.35em;
+  text-align: left;
+}
+
 a, a:visited {
   text-decoration: none;
   color: #E0E0E0;
 }
 
+a:hover {
+  color: #FFFFFF;
+}
+
 p {
+
   margin: .9em 0;
 }
 /* must have mixins: respond-to(mobile), vertical center, top-x/bottom-x */
