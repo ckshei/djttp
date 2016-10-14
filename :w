@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params(:name, :date, :host_id))
-    @event.guests << current_user
+    # @event.guests << current_user
     @event.create_playlist
     if @event.save
       render json: @event, status:201
@@ -50,11 +50,11 @@ class EventsController < ApplicationController
   def rsvp
     event = Event.find(params[:id])
     current_user
-    if event.guests.include?(@current_user)
+    if event.guests.include?(current_user)
       redirect_to event_path(event)
     else
-      event.add_songs(@current_user)
-      event.guests << @current_user
+      event.add_songs(current_user)
+      event.guests << current_user
       event.save
       redirect_to event_path(event)
     end    
@@ -78,7 +78,7 @@ class EventsController < ApplicationController
 
   def refresh_playlist
     event = Event.find(params[:id])
-    event.refresh_playlist(current_user)
+    event.refresh_playlist
     redirect_to event_path(event)
   end
 

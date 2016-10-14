@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
     end
     playlist.update(
       event_id: self.id,
-      host_id: user.id, 
+      host_id: self.host.uid,
       spotify_playlist_id: spotify_playlist.id,
       spotify_url: spotify_playlist.external_urls["spotify"]
     )
@@ -37,7 +37,6 @@ class Event < ActiveRecord::Base
 
   def add_songs(user_obj)
     user = RSpotify::User.new(user_obj.spotify_hash)
-    spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.spotify_playlist_id)
     add_songs = playlist.add_songs
     user.top_tracks(limit: 5).each do |spotify_track|
       song = SongAdapter.find_or_create_by(spotify_track)
@@ -52,8 +51,8 @@ class Event < ActiveRecord::Base
     playlist.save
   end
 
-  def refresh_playlist
-    spotify_playlist = RSpotify::Playlist.find(playlist.host_id.to_s, playlist.spotify_playlist_id)
+  def refresh_playlist(user)
+    spotify_playlist = RSpotify::Playlist.find(user.uid, playlist.spotify_playlist_id)
     spotify_playlist.add_tracks!(playlist.add_songs)
     playlist.add_songs.clear
     playlist.save
