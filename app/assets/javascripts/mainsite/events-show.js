@@ -11,7 +11,7 @@ App.eventsShow = {
         <td>${song_data.song_name}</td>
         <td>${song_data.request_count}</td>
       <tr>`
-      $(".js-playlist-data").prepend(markup)
+      $(".js-playlist-data").append(markup)
     });
     });
     });
