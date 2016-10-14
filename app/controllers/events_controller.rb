@@ -78,7 +78,7 @@ class EventsController < ApplicationController
 
   def refresh_playlist
     event = Event.find(params[:id])
-    event.refresh_playlist(current_user)
+    event.refresh_playlist
     redirect_to event_path(event)
   end
 
