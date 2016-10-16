@@ -17,14 +17,20 @@
   vertical-align: top;
   box-sizing: border-box;
 }
-
+html { 
+}
 html, body {
+  background: url('dj.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1;
   background-color: #181818;
   color: #E0E0E0;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Arial', sans-serif;
   font-size: 1.1em;
   margin: 0;
   padding: 0;
@@ -120,8 +126,11 @@ a:hover {
 }
 
 p {
-
   margin: .9em 0;
+}
+
+.playlist-data {
+  font-size: 2.5em;
 }
 /* must have mixins: respond-to(mobile), vertical center, top-x/bottom-x */
 
