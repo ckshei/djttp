@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  skip_before_action :require_login, only: [:rsvp]
+
   def new
   end
 
@@ -48,8 +50,12 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    event = Event.find(params[:id])
+    unless session.include? :user_id
+      session[:rsvp] = request.original_url
+      return redirect_to "/auth/spotify"
+    end
     current_user
+    event = Event.find(params[:id])
     if event.guests.include?(@current_user)
       redirect_to event_path(event)
     else

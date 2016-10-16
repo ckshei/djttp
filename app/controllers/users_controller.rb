@@ -12,7 +12,10 @@ class UsersController < ApplicationController
     user = UserAdapter.create(spotify_user)
     if user
       session[:user_id] = user.id
-      redirect_to root_path
+      return redirect_to root_path unless session.include? :rsvp
+      rsvp_link = session[:rsvp]
+      session[:rsvp] = nil
+      return redirect_to rsvp_link
     else
       flash[:error] = 'You fucked up'
     end
