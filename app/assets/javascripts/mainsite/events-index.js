@@ -55,7 +55,7 @@ App.eventsIndex = { run: function() {
          $("#event_date").val('')
        } else {
          debugger
-         $("#js-error-messages").html(event_data.date[0])
+         $("#error-messages").html(event_data.date[0])
        }
      });
    });

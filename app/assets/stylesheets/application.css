@@ -138,41 +138,6 @@ p {
   font-size: 2.5em;
 }
 
-div.header{
-  height: 10%;
-  position: absolute;
-}
-h1.header {
-  font-size: 5.5em
-}
-
-h3.blurb {
-  margin: 15% auto 12% auto;
-  text-align: center;
-  width: 80%;
-  font-size: 1.8em;
-  line-height: 1.3;
-  text-shadow: 0px 0px 3px #000;
-  color: #BEBEBE;
-}
-
-a.button {
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-  width: 50%;
-  font-size: 1.5em;
-  font-weight: 500;
-  text-decoration: bold;
-  color: #FFF;
-  background-color: #2D087E;
-  padding: 20px 40px;
-  border-radius: 1em;
-}
-
-h1.header:before {
-      content:url(icon.png);
-    }
 /* must have mixins: respond-to(mobile), vertical center, top-x/bottom-x */
 
 

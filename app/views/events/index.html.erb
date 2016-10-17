@@ -1,21 +1,20 @@
 <h1>DJTTP: My Events</h1>
-  <div class="row event">
-    <div id="js-error-messages">
-      
-    </div>
-    <%= form_for @event do |f| %>
-      <div class="col-xs-12">
-        Name: <%= f.text_field :name, :required => true %>
-        Date: <%= f.date_field :date, :required => true %>
-      </div>
-      <div class="col-xs-12">
-        
-      </div>
-    <%= f.hidden_field :host_id, :value=>@current_user.id %>
-    <%= f.submit %>
-    <% end %>
-  </div>
 
+      <div class="row event">
+          <div class="divider"></div>
+          <div class="col-xs-12 event-details">
+            <h3 class='event-form-header'>Create an Event</h3>
+      <%= form_for @event do |f| %>
+          <%= f.text_field :name, :required => true, placeholder: "Name" %>
+          <%= f.date_field :date, :required => true %>
+      <%= f.hidden_field :host_id, :value=>@current_user.id %>
+    <div id="error-messages"></div>
+          </div>
+          <div class="col-xs-12 create-event-button">
+    <%= f.submit "Create Event", :class => "create-event-button" %>
+      <% end %>
+          </div>
+      </div>
 
   <ul id="js-events-list">
     
