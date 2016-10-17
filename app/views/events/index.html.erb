@@ -1,4 +1,4 @@
-<h1>DJTTP: My Events</h1>
+<h1 class="home-header">DJTTP: Home</h1>
 
       <div class="row event">
           <div class="divider"></div>
@@ -6,7 +6,7 @@
             <h3 class='event-form-header'>Create an Event</h3>
       <%= form_for @event do |f| %>
           <%= f.text_field :name, :required => true, placeholder: "Name" %>
-          <%= f.date_field :date, :required => true %>
+          <%= f.text_field :date, :required => true, placeholder: "Date", id: "datepicker" %>
       <%= f.hidden_field :host_id, :value=>@current_user.id %>
     <div id="error-messages"></div>
           </div>
@@ -15,7 +15,8 @@
       <% end %>
           </div>
       </div>
-
+  <hr>
+  <h2 class="my-events">My Events</h2>
   <ul id="js-events-list">
     
   </ul>

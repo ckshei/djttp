@@ -1,4 +1,7 @@
 App.eventsIndex = { run: function() {
+  
+    var picker = new Pikaday({ field: document.getElementById('datepicker') });
+
     $.get("/events.json", function(data) {
       data.map(function(event_data) {
         var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.rsvp_url, event_data.guest_count, event_data.event_url, event_data.playlist.song_count)

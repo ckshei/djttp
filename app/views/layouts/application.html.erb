@@ -8,9 +8,13 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body class="<%= controller_name %>-<%= action_name %>">
-  <div class="container">
-    <%= render "layouts/navbar" %>
-    <%= yield %>
-  </div>
+    <div class="navbar">
+      <div class="container">
+        <%= render "layouts/navbar" %>
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
 </body>
 </html>

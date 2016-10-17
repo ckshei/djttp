@@ -1,7 +1,11 @@
-<% if @current_user %>
-Hello  <%= @current_user.display_name %>
-<%= link_to("Home", root_path) %>
-<%= link_to("All Events", events_path) %>
-<%= link_to("logout", logout_path, method: :post) %>
-<% end %>
-
+<div class="navbar-flex">
+  <% if @current_user %>
+    <%= link_to("DJTTP", root_path, class: "navbar-logo") %>
+    <div class="hoverbar">
+      <p>Hello  <%= @current_user.display_name %></p>
+      <div class="hide-init">
+        <%= link_to("logout", logout_path, method: :post) %>
+      </div>
+    </div>
+  <% end %>
+</div>

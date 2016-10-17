@@ -1,0 +1,40 @@
+div.navbar {
+  background-color: #282828;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+div.navbar-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hoverbar {
+  position: relative;
+
+  .hide-init {
+    display: none;
+    position: absolute; 
+    right: 0;
+    top: 40px;
+    a {
+      display: block;
+      width: 125px;
+      background: #282828;
+      border: 1px solid rgba(#E0E0E0, 0.25);
+      text-align: right;
+      padding: 7px;
+    }
+
+  }
+    &:hover {
+      .hide-init {
+        display: block;
+      }
+    }
+}
