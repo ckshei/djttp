@@ -4,6 +4,7 @@
     <div class="hoverbar">
       <p>Hello  <%= @current_user.display_name %></p>
       <div class="hide-init">
+        <%= link_to("home", root_path) %>
         <%= link_to("logout", logout_path, method: :post) %>
       </div>
     </div>
