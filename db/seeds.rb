@@ -6,6 +6,3 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-User.create([{uid:1}, {uid:2}, {uid:3}])
-Event.create([{name:"party", host_id:1}])
-EventGuest.create({event_id:1, guest_id:1})

@@ -42,6 +42,11 @@ input {
     font-weight: 600;
     color: #E0E0E0;
     white-space: normal;
+
+    &:active {
+    vertical-align: top;
+    padding: 8px 13px 6px;
+    }
   }
 
 input[type=submit].create-event-button:hover {
