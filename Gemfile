@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'therubyracer'
 gem 'rb-readline'
 #use postgres as database
 gem 'pg'
