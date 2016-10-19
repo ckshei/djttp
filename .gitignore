@@ -15,7 +15,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp
 
 /public/development/uploads
 .env
