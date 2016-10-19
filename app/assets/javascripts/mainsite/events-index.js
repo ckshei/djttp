@@ -1,5 +1,4 @@
 App.eventsIndex = { run: function() {
-  
     var picker = new Pikaday({ field: document.getElementById('datepicker') });
 
     $.get("/events.json", function(data) {

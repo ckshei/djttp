@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem 'rb-readline'
+gem 'pg'
 gem 'active_model_serializers'
 gem 'bcrypt'
 gem 'rspotify', '1.18.0'
