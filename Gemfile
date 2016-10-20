@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-gem 'therubyracer'
+
+gem 'rails_12factor', group: :production
 gem 'rb-readline'
 #use postgres as database
 gem 'pg'
