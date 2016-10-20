@@ -32,5 +32,5 @@ a.button {
 
 
 h1.header:before {
-      content:url('<%=asset_path("icon.png")%>');
+      content:url('<%= asset_path("icon.png") %> ');
     }
