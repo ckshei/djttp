@@ -7,6 +7,6 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def event_url
-    Rails.application.routes.url_helpers.event_url(object.id, host: "localhost:3000")
+    Rails.application.routes.url_helpers.event_url(object.id, host: "www.playlister.co")
   end
 end
