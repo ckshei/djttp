@@ -33,4 +33,5 @@ a.button {
 
 h1.header:before {
       content:url("icon.png");
+      margin-right: 20px;
     }

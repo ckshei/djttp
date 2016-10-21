@@ -1,4 +1,4 @@
-<h1 class="event-specific-name">DJTTP: <%= @event.name %></h1>
+<h1 class="event-specific-name"><%= @event.name %></h1>
 <%= link_to("RSVP", :controller => :events, :action => :rsvp) unless @event.guests.include? current_user%>
 <div class="js-event" data-id="<%= @event.id%>">
   
