@@ -4,4 +4,5 @@ class Playlist < ActiveRecord::Base
   has_many :songs, through: :playlist_songs
   serialize :current_songs, Set
   serialize :add_songs, Array
+  validates :spotify_url, presence: :true
 end
