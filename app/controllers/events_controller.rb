@@ -5,8 +5,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params(:name, :date, :host_id))
-    @event.guests << current_user
+    @event = Event.new(event_params(:name, :date, :host_id))
+    @event.guests = [current_user]
     @event.create_playlist
     if @event.save
       render json: @event, status:201

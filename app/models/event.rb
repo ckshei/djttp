@@ -20,19 +20,21 @@ class Event < ActiveRecord::Base
     hash = self.host.spotify_hash
     user = RSpotify::User.new(hash)
     spotify_playlist = user.create_playlist!("#{self.name}-playlist") 
-    spotify_playlist.add_tracks!(user.top_tracks(limit: 5)) 
-    playlist = Playlist.create
-    user.top_tracks(limit:5).each do |track_id| 
-      song = SongAdapter.find_or_create_by(track_id)
-      playlist.songs << song
+    add_songs = []
+    if user.top_tracks(limit: 5).any?
+      spotify_playlist.add_tracks!(user.top_tracks(limit: 5)) 
+      user.top_tracks(limit:5).each do |track_id| 
+        song = SongAdapter.find_or_create_by(track_id)
+        add_songs << song
+      end
     end
-    playlist.update(
+    self.playlist = Playlist.new(
       event_id: self.id,
       spotify_host_id: self.host.uid,
       spotify_playlist_id: spotify_playlist.id,
-      spotify_url: spotify_playlist.external_urls["spotify"]
+      spotify_url: spotify_playlist.external_urls["spotify"],
+      songs: add_songs
     )
-    playlist.save
   end
 
   def add_songs(user_obj)
