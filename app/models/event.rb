@@ -20,11 +20,12 @@ class Event < ActiveRecord::Base
     hash = self.host.spotify_hash
     user = RSpotify::User.new(hash)
     spotify_playlist = user.create_playlist!("#{self.name}-playlist") 
+    s_top_tracks = user.top_tracks(limit: 7, time_range: 'short_term')
     add_songs = []
-    if user.top_tracks(limit: 5).any?
-      spotify_playlist.add_tracks!(user.top_tracks(limit: 5)) 
-      user.top_tracks(limit:5).each do |track_id| 
-        song = SongAdapter.find_or_create_by(track_id)
+    if s_top_tracks.any?
+      spotify_playlist.add_tracks!(s_top_tracks) 
+      s_top_tracks.each do |spotify_track| 
+        song = SongAdapter.find_or_create_by(spotify_track)
         add_songs << song
       end
     end
@@ -39,15 +40,18 @@ class Event < ActiveRecord::Base
 
   def add_songs(user_obj)
     user = RSpotify::User.new(user_obj.spotify_hash)
+    s_top_tracks = user.top_tracks(limit: 7, time_range: 'short_term')
     add_songs = []
-    user.top_tracks(limit: 5).each do |spotify_track|
-      song = SongAdapter.find_or_create_by(spotify_track)
-      if playlist.songs.include? song
-        playlist_song = PlaylistSong.find_by(song_id: song.id, playlist_id: playlist.id)
-        playlist_song.update(request_count: playlist_song.request_count + 1)
-      else
-        add_songs << spotify_track
-        playlist.songs << song
+    if s_top_tracks.any?
+      s_top_tracks.each do |spotify_track|
+        song = SongAdapter.find_or_create_by(spotify_track)
+        if playlist.songs.include? song
+          playlist_song = PlaylistSong.find_by(song_id: song.id, playlist_id: playlist.id)
+          playlist_song.update(request_count: playlist_song.request_count + 1)
+        else
+          add_songs << spotify_track
+          playlist.songs << song
+        end
       end
     end
     if add_songs.any? 

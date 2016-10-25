@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :require_login, only: [:rsvp]
+  skip_before_action :require_login, only: [:sync]
 
   def new
   end
@@ -51,7 +51,7 @@ class EventsController < ApplicationController
 
   def sync
     unless session.include? :user_id
-      session[:rsvp] = request.original_url
+      session[:sync_url] = request.original_url
       return redirect_to "/auth/spotify"
     end
     current_user
