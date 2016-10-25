@@ -49,11 +49,11 @@ App.eventsIndex = { run: function() {
      var posting = $.post('/events', values);
      posting.done(function(event_data) {
        if (event_data.id) {
-        var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.rsvp_url, event_data.guest_count, event_data.event_url, event_data.playlist.song_count)
+        var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.sync_url, event_data.guest_count, event_data.event_url, event_data.playlist.song_count)
        var markup = ev.createDiv()
          $("#js-events-list").prepend(markup)
-         $("#event_name").empty()
-         $("#event_date").empty()
+        debugger
+         $('#js-new-form')[0].reset()
          $("#error-messages").empty()
        } else {
          $("#error-messages").html(event_data.date[0])

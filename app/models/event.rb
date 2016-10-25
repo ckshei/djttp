@@ -59,7 +59,13 @@ class Event < ActiveRecord::Base
 
   def refresh_playlist
     spotify_playlist = RSpotify::Playlist.find(playlist.spotify_host_id, playlist.spotify_playlist_id)
+    songs_array = spotify_playlist.tracks
+    songs_array.each do |spotify_track|
+      song = SongAdapter.find_or_create_by(spotify_track)
+      unless playlist.songs.include? song
+        playlist.songs << song
+      end
+    end
     playlist.save
   end
-
 end

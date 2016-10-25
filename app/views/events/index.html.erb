@@ -4,7 +4,7 @@
           <div class="divider"></div>
           <div class="col-xs-12 event-details">
             <h3 class='event-form-header'>Create an Event</h3>
-      <%= form_for @event do |f| %>
+            <%= form_for @event, :html => { :id => "js-new-form" } do |f| %>
           <%= f.text_field :name, :required => true, placeholder: "Name" %>
           <%= f.text_field :date, :required => true, placeholder: "Date", id: "datepicker" %>
       <%= f.hidden_field :host_id, :value=>@current_user.id %>
