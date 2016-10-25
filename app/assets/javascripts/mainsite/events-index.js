@@ -52,7 +52,6 @@ App.eventsIndex = { run: function() {
         var ev = new Event(event_data.id, event_data.name, event_data.date, event_data.playlist.spotify_url, event_data.playlist.sync_url, event_data.guest_count, event_data.event_url, event_data.playlist.song_count)
        var markup = ev.createDiv()
          $("#js-events-list").prepend(markup)
-        debugger
          $('#js-new-form')[0].reset()
          $("#error-messages").empty()
        } else {

@@ -6,7 +6,6 @@ App.eventsShow = {
         $(".js-event").append(markup)
     $.get("/events/" + $(".js-event").data('id') + "/playlist.json", function(data) {
     data.playlist_songs.map(function(song_data) {
-    debugger
       var markup = 
       `<tr>
         <td>${song_data.song_name}</td>
