@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   def destroy
   end
 
-  def rsvp
+  def sync
     unless session.include? :user_id
       session[:rsvp] = request.original_url
       return redirect_to "/auth/spotify"

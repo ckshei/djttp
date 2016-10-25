@@ -40,7 +40,7 @@ App.eventsShow = {
             <a href="${this.spotify_url}" target="_blank">Spotify Playlist Link</a>
           </div>
           <div class="col-xs-12 rsvp">
-            <h3>RSVP Link (click to copy)</h3>
+            <h3>Sync Link</h3>
             <p> ${this.rsvp_url} </p>
           </div>
       </div>
